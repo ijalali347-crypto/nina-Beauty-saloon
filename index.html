@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b2747">
+  <title>Nina Beauty Saloon</title>
+  <meta name="description" content="Discover beauty services at Nina Beauty Saloon. Book your appointment today.">
+
+  <style>
+    :root {
+      --plum: #5b2747;
+      --dark: #321b2b;
+      --pink: #f5dce8;
+      --cream: #fffaf6;
+      --gold: #c69b62;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    body[dir="rtl"] {
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    a { text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 250, 246, .96);
+      box-shadow: 0 3px 18px rgba(50, 27, 43, .1);
+    }
+
+    .nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--plum);
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links, .languages {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .languages button {
+      border: 1px solid var(--plum);
+      background: transparent;
+      color: var(--plum);
+      border-radius: 20px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .languages button.active {
+      background: var(--plum);
+      color: white;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 80px 22px;
+      color: white;
+      background:
+        linear-gradient(115deg, rgba(50, 27, 43, .92), rgba(91, 39, 71, .75)),
+        radial-gradient(circle at 75% 30%, #d69bb9, #5b2747 65%);
+    }
+
+    .hero-content { max-width: 750px; }
+
+    .eyebrow {
+      color: #f5d7ad;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { font-family: Georgia, serif; }
+
+    h1 {
+      font-size: clamp(45px, 8vw, 88px);
+      line-height: 1.08;
+      margin: 15px 0;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--gold);
+      color: #241521;
+      border-radius: 30px;
+      padding: 13px 25px;
+      font-weight: bold;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #e0b67c;
+    }
+
+    section { padding: 75px 22px; }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      color: var(--plum);
+      font-size: clamp(31px, 5vw, 45px);
+      margin: 0 0 10px;
+    }
+
+    .section-heading p { margin: 0; }
+
+    .services {
+      background: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid #f0dfe6;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 9px 25px rgba(50, 27, 43, .06);
+      transition: transform .2s;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .card .icon { font-size: 35px; }
+
+    .card h3 {
+      color: var(--plum);
+      font-size: 23px;
+      margin: 13px 0 8px;
+    }
+
+    .card p { margin: 0; }
+
+    .about {
+      background: linear-gradient(135deg, #fffaf6, #f8e6ed);
+    }
+
+    .about-box {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .booking {
+      background: var(--plum);
+      color: white;
+      text-align: center;
+    }
+
+    .booking h2 {
+      font-size: clamp(31px, 5vw, 45px);
+      margin: 0 0 10px;
+    }
+
+    .contact-details {
+      margin-top: 22px;
+      font-size: 17px;
+    }
+
+    .contact-details a { color: #f5d7ad; }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: var(--dark);
+      color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .nav { justify-content: center; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .logo { width: 100%; text-align: center; }
+      .nav-links, .languages { justify-content: center; }
+      .grid { grid-template-columns: 1fr; }
+      .hero { min-height: 520px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#home">NINA ✦ BEAUTY</a>
+
+      <div class="nav-links">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </div>
+
+      <div class="languages" aria-label="Choose language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ar">العربية</button>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow" data-i18n="welcome">Welcome to</div>
+        <h1>Nina Beauty Saloon</h1>
+        <p data-i18n="heroText">
+          A beautiful space to relax, refresh, and feel your best.
+        </p>
+        <a class="button whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
+           data-i18n="bookNow">Book on WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <h2 data-i18n="servicesTitle">Our Services</h2>
+          <p data-i18n="servicesIntro">A little care can make every day feel special.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">✂️</div>
+            <h3 data-i18n="hairTitle">Hair Styling</h3>
+            <p data-i18n="hairText">Cuts, styling, and beautiful looks for every occasion.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💅</div>
+            <h3 data-i18n="nailsTitle">Nails</h3>
+            <p data-i18n="nailsText">Manicures and pedicures for perfectly cared-for nails.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">✨</div>
+            <h3 data-i18n="facialTitle">Facials</h3>
+            <p data-i18n="facialText">Refreshing treatments to help your skin glow.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💄</div>
+            <h3 data-i18n="makeupTitle">Makeup</h3>
+            <p data-i18n="makeupText">Elegant makeup for celebrations and special events.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌸</div>
+            <h3 data-i18n="browsTitle">Brows & Beauty</h3>
+            <p data-i18n="browsText">Finishing touches that bring out your natural beauty.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">👰</div>
+            <h3 data-i18n="bridalTitle">Bridal Beauty</h3>
+            <p data-i18n="bridalText">A memorable look for your most special day.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-box">
+        <div class="section-heading">
+          <h2 data-i18n="aboutTitle">About Nina Beauty Saloon</h2>
+        </div>
+        <p data-i18n="aboutText">
+          At Nina Beauty Saloon, we believe everyone deserves time to feel confident and cared for.
+          Visit us for a welcoming beauty experience made just for you.
+        </p>
+      </div>
+    </section>
+
+    <section class="booking" id="contact">
+      <div class="container">
+        <h2 data-i18n="contactTitle">Ready for your appointment?</h2>
+        <p data-i18n="contactText">Message us to ask about services and available times.</p>
+        <a class="button whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
+           data-i18n="contactButton">Chat on WhatsApp</a>
+        <div class="contact-details">
+          <span data-i18n="whatsappLabel">WhatsApp:</span>
+          <a class="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer">
+            +971 50 000 0000
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Nina Beauty Saloon
+  </footer>
+
+  <script>
+    // Change this to the saloon's WhatsApp number.
+    // Include country code. Do not include +, spaces, or dashes.
+    const whatsappNumber = "+33651600511";
+
+    const translations = {
+      en: {
+        navHome: "Home",
+        navServices: "Services",
+        navAbout: "About",
+        navContact: "Contact",
+        welcome: "Welcome to",
+        heroText: "A beautiful space to relax, refresh, and feel your best.",
+        bookNow: "Book on WhatsApp",
+        servicesTitle: "Our Services",
+        servicesIntro: "A little care can make every day feel special.",
+        hairTitle: "Hair Styling",
+        hairText: "Cuts, styling, and beautiful looks for every occasion.",
+        nailsTitle: "Nails",
+        nailsText: "Manicures and pedicures for perfectly cared-for nails.",
+        facialTitle: "Facials",
+        facialText: "Refreshing treatments to help your skin glow.",
+        makeupTitle: "Makeup",
+        makeupText: "Elegant makeup for celebrations and special events.",
+        browsTitle: "Brows & Beauty",
+        browsText: "Finishing touches that bring out your natural beauty.",
+        bridalTitle: "Bridal Beauty",
+        bridalText: "A memorable look for your most special day.",
+        aboutTitle: "About Nina Beauty Saloon",
+        aboutText: "At Nina Beauty Saloon, we believe everyone deserves time to feel confident and cared for. Visit us for a welcoming beauty experience made just for you.",
+        contactTitle: "Ready for your appointment?",
+        contactText: "Message us to ask about services and available times.",
+        contactButton: "Chat on WhatsApp",
+        whatsappLabel: "WhatsApp:"
+      },
+
+      ar: {
+        navHome: "الرئيسية",
+        navServices: "الخدمات",
+        navAbout: "من نحن",
+        navContact: "تواصل معنا",
+        welcome: "مرحباً بكم في",
+        heroText: "مساحة جميلة للاسترخاء وتجديد نشاطك والشعور بأفضل حال.",
+        bookNow: "احجزي عبر واتساب",
+        servicesTitle: "خدماتنا",
+        servicesIntro: "القليل من العناية يجعل كل يوم مميزاً.",
+        hairTitle: "تصفيف الشعر",
+        hairText: "قصات وتسريحات وإطلالات جميلة لكل مناسبة.",
+        nailsTitle: "العناية بالأظافر",
+        nailsText: "مانيكير وباديكير لأظافر جميلة ومعتنى بها.",
+        facialTitle: "العناية بالبشرة",
+        facialText: "جلسات منعشة تساعد بشرتك على التألق.",
+        makeupTitle: "المكياج",
+        makeupText: "مكياج أنيق للاحتفالات والمناسبات الخاصة.",
+        browsTitle: "الحواجب والجمال",
+        browsText: "لمسات أخيرة تبرز جمالك الطبيعي.",
+        bridalTitle: "تجميل العرائس",
+        bridalText: "إطلالة لا تُنسى ليومك المميز.",
+        aboutTitle: "عن صالون نينا للتجميل",
+        aboutText: "في صالون نينا للتجميل، نؤمن بأن الجميع يستحق وقتاً للشعور بالثقة والاهتمام. زورينا لتجربة تجميلية دافئة تناسبك.",
+        contactTitle: "هل أنتِ مستعدة لحجز موعدك؟",
+        contactText: "راسِلينا للاستفسار عن الخدمات والمواعيد المتاحة.",
+        contactButton: "تواصلي عبر واتساب",
+        whatsappLabel: "واتساب:"
+      },
+
+      fr: {
+        navHome: "Accueil",
+        navServices: "Services",
+        navAbout: "À propos",
+        navContact: "Contact",
+        welcome: "Bienvenue chez",
+        heroText: "Un bel espace pour vous détendre, vous ressourcer et vous sentir au mieux.",
+        bookNow: "Réserver sur WhatsApp",
+        servicesTitle: "Nos services",
+        servicesIntro: "Un peu d'attention rend chaque journée spéciale.",
+        hairTitle: "Coiffure",
+        hairText: "Coupes, coiffures et looks élégants pour chaque occasion.",
+        nailsTitle: "Ongles",
+        nailsText: "Manucures et pédicures pour des ongles soignés.",
+        facialTitle: "Soins du visage",
+        facialText: "Des soins rafraîchissants pour une peau éclatante.",
+        makeupTitle: "Maquillage",
+        makeupText: "Un maquillage élégant pour vos fêtes et événements.",
+        browsTitle: "Sourcils et beauté",
+        browsText: "Des touches finales qui révèlent votre beauté naturelle.",
+        bridalTitle: "Beauté de la mariée",
+        bridalText: "Un look inoubliable pour votre grand jour.",
+        aboutTitle: "À propos de Nina Beauty Saloon",
+        aboutText: "Chez Nina Beauty Saloon, nous pensons que chacun mérite de prendre du temps pour soi et de se sentir bien. Venez profiter d'une expérience beauté accueillante et personnalisée.",
+        contactTitle: "Prête à prendre rendez-vous ?",
+        contactText: "Écrivez-nous pour connaître nos services et nos disponibilités.",
+        contactButton: "Discuter sur WhatsApp",
+        whatsappLabel: "WhatsApp :"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.body.dir = document.documentElement.dir;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        element.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+        button.setAttribute("aria-pressed", button.dataset.lang === lang);
+      });
+
+      localStorage.setItem("ninaLanguage", lang);
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    document.querySelectorAll(".whatsapp-link").forEach(link => {
+      link.href = `https://wa.me/${whatsappNumber}`;
+    });
+
+    document.querySelector(".contact-details .whatsapp-link").textContent =
+      `+${whatsappNumber}`;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const savedLanguage = localStorage.getItem("ninaLanguage");
+    setLanguage(translations[savedLanguage] ? savedLanguage : "en");
+  </script>
+</body>
+</html>
