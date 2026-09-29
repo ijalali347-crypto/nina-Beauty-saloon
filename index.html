@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#5b2747">
-  <title>Nina Beauty Saloon</title>
-  <meta name="description" content="Discover beauty services at Nina Beauty Saloon. Book your appointment today.">
+  <meta name="theme-color" content="#3c2330">
+  <meta name="description" content="Nina Beauty Saloon — hair, nails, makeup and beauty services.">
+  <title>Nina Beauty Saloon | Beauty Begins Here</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --plum: #5b2747;
-      --dark: #321b2b;
-      --pink: #f5dce8;
+      --dark: #30212a;
+      --plum: #633d50;
+      --rose: #b86c82;
+      --pink: #f7e5e7;
       --cream: #fffaf6;
-      --gold: #c69b62;
-      --white: #ffffff;
+      --gold: #bf9565;
+      --muted: #766870;
+      --white: #fff;
+      --shadow: 0 20px 55px rgba(63, 37, 49, .11);
     }
 
     * { box-sizing: border-box; }
@@ -25,233 +32,616 @@
       margin: 0;
       background: var(--cream);
       color: var(--dark);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      font-family: "DM Sans", Arial, sans-serif;
+      overflow-x: hidden;
     }
 
-    body[dir="rtl"] {
-      font-family: Tahoma, Arial, sans-serif;
+    body[dir="rtl"] { font-family: Tahoma, Arial, sans-serif; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    a { text-decoration: none; }
+    .announcement {
+      padding: 8px 15px;
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
       background: rgba(255, 250, 246, .96);
-      box-shadow: 0 3px 18px rgba(50, 27, 43, .1);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(99, 61, 80, .09);
     }
 
     .nav {
-      max-width: 1150px;
-      margin: auto;
-      padding: 14px 22px;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .logo {
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
       color: var(--plum);
-      font-family: Georgia, serif;
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .brand strong {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 29px;
+      letter-spacing: 5px;
+    }
+
+    .brand small {
+      margin-top: 7px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-align: center;
     }
 
     .nav-links, .languages {
       display: flex;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 23px;
     }
 
     .nav-links a {
-      color: var(--dark);
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 700;
+      transition: color .2s;
     }
 
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--rose); }
+
+    .languages { gap: 5px; }
 
     .languages button {
-      border: 1px solid var(--plum);
+      border: 0;
       background: transparent;
-      color: var(--plum);
-      border-radius: 20px;
-      padding: 6px 10px;
+      color: var(--muted);
+      padding: 8px;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 7px;
     }
 
     .languages button.active {
-      background: var(--plum);
-      color: white;
+      color: var(--plum);
+      background: var(--pink);
     }
 
     .hero {
-      min-height: 570px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 80px 22px;
-      color: white;
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
       background:
-        linear-gradient(115deg, rgba(50, 27, 43, .92), rgba(91, 39, 71, .75)),
-        radial-gradient(circle at 75% 30%, #d69bb9, #5b2747 65%);
+        radial-gradient(circle at 74% 45%, #f6d9df 0, transparent 34%),
+        linear-gradient(120deg, #fffaf6 18%, #f9eff0 100%);
     }
 
-    .hero-content { max-width: 750px; }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(184, 108, 130, .15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 540px;
+      height: 540px;
+      inset-inline-end: -120px;
+      top: -260px;
+    }
+
+    .hero::after {
+      width: 360px;
+      height: 360px;
+      inset-inline-start: -200px;
+      bottom: -230px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 35px;
+      padding-block: 70px;
+      position: relative;
+      z-index: 1;
+    }
 
     .eyebrow {
-      color: #f5d7ad;
-      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--rose);
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    h1, h2, h3 { font-family: Georgia, serif; }
-
-    h1 {
-      font-size: clamp(45px, 8vw, 88px);
-      line-height: 1.08;
-      margin: 15px 0;
+    .eyebrow::before {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
     }
 
-    .hero p {
-      font-size: 19px;
-      margin-bottom: 30px;
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    h1 {
+      font-size: clamp(51px, 6.6vw, 91px);
+      line-height: 1.09;
+      letter-spacing: -2px;
+      margin: 18px 0;
+      font-weight: 600;
+    }
+
+    h1 em {
+      display: block;
+      color: var(--rose);
+      font-weight: 500;
+    }
+
+    .hero-copy p {
+      max-width: 510px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     .button {
-      display: inline-block;
-      background: var(--gold);
-      color: #241521;
-      border-radius: 30px;
-      padding: 13px 25px;
-      font-weight: bold;
-      transition: transform .2s, background .2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 12px 23px;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .25s, background .25s, box-shadow .25s;
     }
 
     .button:hover {
       transform: translateY(-3px);
-      background: #e0b67c;
+      box-shadow: 0 10px 25px rgba(63, 37, 49, .16);
     }
 
-    section { padding: 75px 22px; }
-
-    .container {
-      max-width: 1150px;
-      margin: auto;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 38px;
-    }
-
-    .section-heading h2 {
-      color: var(--plum);
-      font-size: clamp(31px, 5vw, 45px);
-      margin: 0 0 10px;
-    }
-
-    .section-heading p { margin: 0; }
-
-    .services {
-      background: white;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--cream);
-      border: 1px solid #f0dfe6;
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 9px 25px rgba(50, 27, 43, .06);
-      transition: transform .2s;
-    }
-
-    .card:hover { transform: translateY(-5px); }
-
-    .card .icon { font-size: 35px; }
-
-    .card h3 {
-      color: var(--plum);
-      font-size: 23px;
-      margin: 13px 0 8px;
-    }
-
-    .card p { margin: 0; }
-
-    .about {
-      background: linear-gradient(135deg, #fffaf6, #f8e6ed);
-    }
-
-    .about-box {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .booking {
+    .button.primary {
       background: var(--plum);
       color: white;
+    }
+
+    .button.secondary {
+      border: 1px solid var(--plum);
+      color: var(--plum);
+    }
+
+    .hero-art {
+      position: relative;
+      height: 540px;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-circle {
+      position: absolute;
+      width: min(490px, 95%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(140deg, #f8dfe1, #d6a1af);
+      box-shadow: inset 0 0 0 18px rgba(255,255,255,.28);
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .woman-art {
+      position: relative;
+      z-index: 2;
+      width: min(440px, 91%);
+      max-height: 520px;
+      filter: drop-shadow(0 25px 22px rgba(66, 35, 48, .19));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .floating-item {
+      position: absolute;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow);
+      font-size: 32px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .float-one { top: 32px; inset-inline-start: 10px; }
+    .float-two { top: 155px; inset-inline-end: -8px; animation-delay: -1.4s; }
+    .float-three { bottom: 32px; inset-inline-start: 15px; animation-delay: -2.7s; }
+
+    .sparkle {
+      position: absolute;
+      z-index: 3;
+      color: var(--gold);
+      font-size: 29px;
+      animation: twinkle 2.5s ease-in-out infinite;
+    }
+
+    .sparkle.s1 { top: 65px; inset-inline-end: 80px; }
+    .sparkle.s2 { bottom: 70px; inset-inline-end: 85px; animation-delay: 1s; }
+
+    .strip {
+      background: var(--plum);
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .strip-track {
+      display: flex;
+      width: max-content;
+      gap: 45px;
+      padding: 15px 0;
+      animation: marquee 25s linear infinite;
+    }
+
+    .strip-track span {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .strip-track b { color: #e7bb9f; }
+
+    section.section { padding: 100px 0; }
+
+    .section-top {
       text-align: center;
+      margin-bottom: 48px;
     }
 
-    .booking h2 {
-      font-size: clamp(31px, 5vw, 45px);
-      margin: 0 0 10px;
+    .section-top h2 {
+      font-size: clamp(34px, 4.2vw, 55px);
+      font-weight: 500;
+      margin: 13px 0 10px;
     }
 
-    .contact-details {
-      margin-top: 22px;
-      font-size: 17px;
+    .section-top p {
+      max-width: 590px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
-    .contact-details a { color: #f5d7ad; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
 
-    footer {
-      padding: 25px;
-      text-align: center;
-      background: var(--dark);
-      color: white;
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 265px;
+      padding: 30px;
+      background: #fff;
+      border: 1px solid #f1e2e5;
+      box-shadow: 0 10px 32px rgba(63, 37, 49, .04);
+      transition: transform .35s, box-shadow .35s, background .35s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-9px);
+      box-shadow: var(--shadow);
+      background: #fff9f9;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      background: #faeaec;
+      top: -66px;
+      inset-inline-end: -50px;
+      transition: transform .4s;
+    }
+
+    .service-card:hover::after { transform: scale(1.4); }
+
+    .service-icon {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 68px;
+      height: 68px;
+      background: var(--pink);
+      border-radius: 50%;
+      font-size: 32px;
+      transition: transform .45s;
+    }
+
+    .service-card:hover .service-icon {
+      transform: rotate(-10deg) scale(1.13);
+    }
+
+    .service-card h3 {
+      position: relative;
+      z-index: 1;
+      font-size: 24px;
+      margin: 25px 0 10px;
+    }
+
+    .service-card p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
       font-size: 14px;
     }
 
-    @media (max-width: 800px) {
-      .nav { justify-content: center; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
+    .experience {
+      background: #f7eceb;
     }
 
-    @media (max-width: 560px) {
-      .logo { width: 100%; text-align: center; }
-      .nav-links, .languages { justify-content: center; }
-      .grid { grid-template-columns: 1fr; }
-      .hero { min-height: 520px; }
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .beauty-display {
+      min-height: 440px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    .visual-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 140px 140px 12px 12px;
+      background: linear-gradient(140deg, #e7bdc6, #a6687d);
+      color: #fff;
+      box-shadow: var(--shadow);
+      transition: transform .4s;
+      min-height: 300px;
+    }
+
+    .visual-tile:hover { transform: translateY(-10px); }
+
+    .visual-tile:nth-child(2) {
+      margin-top: 60px;
+      background: linear-gradient(140deg, #e9d6bc, #bc8e77);
+    }
+
+    .visual-tile .tile-art {
+      font-size: clamp(95px, 12vw, 160px);
+      line-height: 1.2;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .visual-tile:nth-child(2) .tile-art { animation-delay: -2s; }
+
+    .visual-tile span:last-child {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 21px;
+      margin-top: 15px;
+    }
+
+    .experience-copy h2 {
+      font-size: clamp(36px, 4vw, 54px);
+      line-height: 1.2;
+      font-weight: 500;
+      margin: 18px 0;
+    }
+
+    .experience-copy p {
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 15px 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .feature i {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--rose);
+      font-style: normal;
+    }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 80%, rgba(255,255,255,.1), transparent 25%),
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.1), transparent 25%),
+        var(--plum);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(39px, 5vw, 65px);
+      font-weight: 500;
+      margin: 18px 0;
+    }
+
+    .cta p { color: #f3e2e7; }
+
+    .cta .button {
+      margin-top: 20px;
+      background: #fff;
+      color: var(--plum);
+    }
+
+    .contact-number {
+      display: block;
+      margin-top: 25px;
+      color: #f2d2dc;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #271d23;
+      color: #ebdfe4;
+      text-align: center;
+      padding: 27px 15px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .35; transform: scale(.8); }
+      50% { opacity: 1; transform: scale(1.25); }
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 950px) {
+      .nav { flex-wrap: wrap; justify-content: center; padding-block: 15px; }
+      .brand { margin-inline-end: auto; }
+      .hero-grid { grid-template-columns: 1fr 1fr; }
+      .hero-art { height: 430px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .experience-grid { gap: 35px; }
+    }
+
+    @media (max-width: 700px) {
+      .nav { gap: 12px; }
+      .brand { width: 100%; align-items: center; margin: 0; }
+      .nav-links { width: 100%; justify-content: center; gap: 17px; }
+      .languages { justify-content: center; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; padding-top: 65px; }
+      .eyebrow { justify-content: center; }
+      .hero-copy p { margin-inline: auto; }
+      .buttons { justify-content: center; }
+      .hero-art { height: 440px; }
+      .art-circle { width: 390px; max-width: 90%; }
+      .woman-art { width: 345px; }
+      .floating-item { width: 61px; height: 61px; font-size: 26px; }
+      .services-grid, .experience-grid { grid-template-columns: 1fr; }
+      .beauty-display { max-width: 470px; margin: auto; width: 100%; }
+      section.section { padding: 75px 0; }
+    }
+
+    @media (max-width: 430px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 11px; }
+      .hero-art { height: 365px; }
+      .woman-art { width: 290px; }
+      .beauty-display { min-height: 310px; gap: 10px; }
+      .visual-tile { min-height: 250px; }
+      .visual-tile:nth-child(2) { margin-top: 35px; }
+      .visual-tile .tile-art { font-size: 85px; }
+      .visual-tile span:last-child { font-size: 17px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 
 <body>
+  <div class="announcement" data-i18n="announcement">
+    BEAUTY • CONFIDENCE • YOU
+  </div>
+
   <header>
-    <nav class="nav">
-      <a class="logo" href="#home">NINA ✦ BEAUTY</a>
+    <nav class="nav container">
+      <a href="#home" class="brand" aria-label="Nina Beauty Saloon">
+        <strong>NINA</strong>
+        <small>BEAUTY SALOON</small>
+      </a>
 
       <div class="nav-links">
-        <a href="#home" data-i18n="navHome">Home</a>
-        <a href="#services" data-i18n="navServices">Services</a>
-        <a href="#about" data-i18n="navAbout">About</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#home" data-i18n="home">HOME</a>
+        <a href="#services" data-i18n="services">SERVICES</a>
+        <a href="#about" data-i18n="about">ABOUT</a>
+        <a href="#contact" data-i18n="contact">CONTACT</a>
       </div>
 
       <div class="languages" aria-label="Choose language">
@@ -264,190 +654,298 @@
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="eyebrow" data-i18n="welcome">Welcome to</div>
-        <h1>Nina Beauty Saloon</h1>
-        <p data-i18n="heroText">
-          A beautiful space to relax, refresh, and feel your best.
-        </p>
-        <a class="button whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
-           data-i18n="bookNow">Book on WhatsApp</a>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow" data-i18n="heroEyebrow">YOUR BEAUTY DESTINATION</div>
+          <h1>
+            <span data-i18n="heroLine1">Feel beautiful.</span>
+            <em data-i18n="heroLine2">Be yourself.</em>
+          </h1>
+          <p data-i18n="heroDescription">
+            Step into a world of beauty and relaxation. From stunning hair to flawless nails, your moment to shine begins here.
+          </p>
+          <div class="buttons">
+            <a href="#" class="button primary whatsapp-link" target="_blank" rel="noopener noreferrer" data-i18n="book">
+              BOOK APPOINTMENT
+            </a>
+            <a href="#services" class="button secondary" data-i18n="explore">
+              EXPLORE SERVICES
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Animated illustration of a woman with flowing hair">
+          <div class="art-circle"></div>
+          <span class="sparkle s1">✦</span>
+          <span class="sparkle s2">✦</span>
+          <span class="floating-item float-one" aria-hidden="true">💅</span>
+          <span class="floating-item float-two" aria-hidden="true">💄</span>
+          <span class="floating-item float-three" aria-hidden="true">✂️</span>
+
+          <svg class="woman-art" viewBox="0 0 450 530" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Woman with flowing hair">
+            <defs>
+              <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2c1b25"/>
+                <stop offset=".55" stop-color="#513141"/>
+                <stop offset="1" stop-color="#21151c"/>
+              </linearGradient>
+              <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#9d546b"/>
+                <stop offset="1" stop-color="#603246"/>
+              </linearGradient>
+              <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#efbd9e"/>
+                <stop offset="1" stop-color="#d48e76"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Flowing hair -->
+            <path d="M138 142C116 65 170 25 243 37c88 14 120 93 92 176-21 61 44 130 72 192 18 41 3 83-39 99H77c-46-41-18-94 5-142 34-71 12-151 56-220Z" fill="url(#hair)"/>
+            <path d="M139 145C90 212 127 270 90 347c-17 37-42 70-26 122 31-26 56-63 67-106 22-89-15-144 33-201Z" fill="#674254" opacity=".85"/>
+            <path d="M304 132c60 76 15 157 54 244 16 36 31 61 52 79-9-73-62-113-58-193 2-50 3-92-48-130Z" fill="#674254" opacity=".8"/>
+
+            <!-- Neck and shoulders -->
+            <path d="M197 255h67v83h-67z" fill="url(#skin)"/>
+            <path d="M177 305c-42 13-87 29-107 70L42 530h367l-29-155c-16-41-66-57-108-70l-41 48-54-48Z" fill="url(#dress)"/>
+            <path d="M177 305l54 48 41-48-38 83-57-83Z" fill="#f4d2bf"/>
+            <path d="M70 375c28 45 35 98 34 155H42l28-155Zm310 0c-26 45-35 98-34 155h63l-29-155Z" fill="#4d2d3e" opacity=".35"/>
+
+            <!-- Face -->
+            <path d="M153 131c3-57 44-91 91-91 60 0 95 46 91 104l-10 73c-6 58-45 104-91 104-49 0-84-48-88-104l7-86Z" fill="url(#skin)"/>
+            <path d="M151 166c-15-20-29-6-23 20 5 23 17 33 27 31Zm178 0c15-20 29-6 23 20-5 23-17 33-27 31Z" fill="#d9967d"/>
+
+            <!-- Hair framing face -->
+            <path d="M152 169c17-8 12-46 45-71 36-27 84-13 121 20 1-61-34-100-94-96-67 4-103 53-72 147Z" fill="url(#hair)"/>
+            <path d="M316 112c-11 52 12 77 13 144 21-41 25-85 13-124l-26-20Z" fill="#392430"/>
+            <path d="M153 150c-6 86-8 119-32 166-14-57-14-112 10-159Z" fill="#392430"/>
+
+            <!-- Face details -->
+            <path d="M170 191c15-10 31-10 45-2m43 0c17-10 33-8 47 3" fill="none" stroke="#6b3a39" stroke-width="5" stroke-linecap="round"/>
+            <path d="M176 207c11 9 23 9 34 0m54 0c12 9 24 9 35 0" fill="none" stroke="#432b2d" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="195" cy="208" r="3" fill="#2b1d20"/>
+            <circle cx="282" cy="208" r="3" fill="#2b1d20"/>
+            <path d="M238 211c-3 18-9 34-2 40 5 3 12 3 17 0" fill="none" stroke="#b77567" stroke-width="3" stroke-linecap="round"/>
+            <path d="M211 268c14 9 36 11 55-1-14 18-40 20-55 1Z" fill="#a64559"/>
+            <path d="M218 264c14-4 28-4 41 0" fill="none" stroke="#bd6c6e" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="174" cy="237" rx="17" ry="9" fill="#d77f78" opacity=".25"/>
+            <ellipse cx="302" cy="237" rx="17" ry="9" fill="#d77f78" opacity=".25"/>
+
+            <!-- Earrings -->
+            <circle cx="150" cy="216" r="5" fill="#eec989"/>
+            <path d="M150 220v20" stroke="#eec989" stroke-width="3"/>
+            <circle cx="150" cy="242" r="6" fill="#eec989"/>
+            <circle cx="329" cy="216" r="5" fill="#eec989"/>
+            <path d="M329 220v20" stroke="#eec989" stroke-width="3"/>
+            <circle cx="329" cy="242" r="6" fill="#eec989"/>
+
+            <!-- Hair shine -->
+            <path d="M162 96c33-45 103-53 146-9M126 316c21-63 16-113 24-145" fill="none" stroke="#a36b82" stroke-width="7" stroke-linecap="round" opacity=".35"/>
+          </svg>
+        </div>
       </div>
     </section>
 
-    <section class="services" id="services">
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
+        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
+        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
+        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
+      </div>
+    </div>
+
+    <section class="section" id="services">
       <div class="container">
-        <div class="section-heading">
-          <h2 data-i18n="servicesTitle">Our Services</h2>
-          <p data-i18n="servicesIntro">A little care can make every day feel special.</p>
+        <div class="section-top reveal">
+          <span class="eyebrow" data-i18n="servicesEyebrow">WHAT WE DO</span>
+          <h2 data-i18n="servicesTitle">Beauty services made for you</h2>
+          <p data-i18n="servicesIntro">
+            Discover the little moments of care that help you look and feel amazing.
+          </p>
         </div>
 
-        <div class="grid">
-          <article class="card">
-            <div class="icon">✂️</div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">💇‍♀️</div>
             <h3 data-i18n="hairTitle">Hair Styling</h3>
-            <p data-i18n="hairText">Cuts, styling, and beautiful looks for every occasion.</p>
+            <p data-i18n="hairText">Beautiful cuts, styling and hair looks for every occasion.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">💅</div>
-            <h3 data-i18n="nailsTitle">Nails</h3>
-            <p data-i18n="nailsText">Manicures and pedicures for perfectly cared-for nails.</p>
+          <article class="service-card reveal">
+            <div class="service-icon">💅</div>
+            <h3 data-i18n="nailsTitle">Nail Care</h3>
+            <p data-i18n="nailsText">Manicures, pedicures and lovely finishing touches.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">✨</div>
-            <h3 data-i18n="facialTitle">Facials</h3>
-            <p data-i18n="facialText">Refreshing treatments to help your skin glow.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">💄</div>
+          <article class="service-card reveal">
+            <div class="service-icon">💄</div>
             <h3 data-i18n="makeupTitle">Makeup</h3>
-            <p data-i18n="makeupText">Elegant makeup for celebrations and special events.</p>
+            <p data-i18n="makeupText">An elegant look for your celebration or special event.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">🌸</div>
+          <article class="service-card reveal">
+            <div class="service-icon">🧖‍♀️</div>
+            <h3 data-i18n="facialTitle">Facials</h3>
+            <p data-i18n="facialText">A refreshing beauty experience for glowing skin.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✨</div>
             <h3 data-i18n="browsTitle">Brows & Beauty</h3>
-            <p data-i18n="browsText">Finishing touches that bring out your natural beauty.</p>
+            <p data-i18n="browsText">Details that highlight your natural beauty.</p>
           </article>
 
-          <article class="card">
-            <div class="icon">👰</div>
+          <article class="service-card reveal">
+            <div class="service-icon">👰‍♀️</div>
             <h3 data-i18n="bridalTitle">Bridal Beauty</h3>
-            <p data-i18n="bridalText">A memorable look for your most special day.</p>
+            <p data-i18n="bridalText">Feel wonderful and look unforgettable on your big day.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="about-box">
-        <div class="section-heading">
-          <h2 data-i18n="aboutTitle">About Nina Beauty Saloon</h2>
+    <section class="section experience" id="about">
+      <div class="container experience-grid">
+        <div class="beauty-display reveal">
+          <div class="visual-tile">
+            <span class="tile-art" aria-hidden="true">💇‍♀️</span>
+            <span data-i18n="hairDisplay">Hair beauty</span>
+          </div>
+          <div class="visual-tile">
+            <span class="tile-art" aria-hidden="true">💅</span>
+            <span data-i18n="nailsDisplay">Nail beauty</span>
+          </div>
         </div>
-        <p data-i18n="aboutText">
-          At Nina Beauty Saloon, we believe everyone deserves time to feel confident and cared for.
-          Visit us for a welcoming beauty experience made just for you.
-        </p>
+
+        <div class="experience-copy reveal">
+          <span class="eyebrow" data-i18n="aboutEyebrow">WELCOME TO NINA</span>
+          <h2 data-i18n="aboutTitle">Your time to feel beautiful</h2>
+          <p data-i18n="aboutText">
+            Nina Beauty Saloon is a space to pause, relax and enjoy a little time for yourself. Explore our beauty services and get in touch to plan your visit.
+          </p>
+          <div class="feature"><i>✦</i><span data-i18n="feature1">Beauty for everyday and special occasions</span></div>
+          <div class="feature"><i>✦</i><span data-i18n="feature2">A welcoming salon experience</span></div>
+          <div class="feature"><i>✦</i><span data-i18n="feature3">Easy appointment booking on WhatsApp</span></div>
+          <div class="buttons">
+            <a class="button primary whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="book">
+              BOOK APPOINTMENT
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="booking" id="contact">
-      <div class="container">
-        <h2 data-i18n="contactTitle">Ready for your appointment?</h2>
-        <p data-i18n="contactText">Message us to ask about services and available times.</p>
-        <a class="button whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
-           data-i18n="contactButton">Chat on WhatsApp</a>
-        <div class="contact-details">
-          <span data-i18n="whatsappLabel">WhatsApp:</span>
-          <a class="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer">
-            +971 50 000 0000
-          </a>
-        </div>
+    <section class="section cta" id="contact">
+      <div class="container reveal">
+        <span class="eyebrow" style="color:#f5cbd5" data-i18n="contactEyebrow">LET'S MAKE IT A BEAUTIFUL DAY</span>
+        <h2 data-i18n="contactTitle">Your beauty moment awaits</h2>
+        <p data-i18n="contactText">Message Nina Beauty Saloon to ask about services and book your appointment.</p>
+        <a class="button whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="chat">
+          CHAT ON WHATSAPP
+        </a>
+        <a class="contact-number whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" id="phoneDisplay"></a>
       </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Nina Beauty Saloon
+    © <span id="year"></span> NINA BEAUTY SALOON · <span data-i18n="footer">BEAUTY BEGINS HERE</span>
   </footer>
 
   <script>
-    // Change this to the saloon's WhatsApp number.
-    // Include country code. Do not include +, spaces, or dashes.
-    const whatsappNumber = "+33651600511";
+    // IMPORTANT: Put the SAME WhatsApp number you used on your old website here.
+    // Country code included, with no + sign, spaces, or dashes.
+    const whatsappNumber = "33651600511";
 
     const translations = {
       en: {
-        navHome: "Home",
-        navServices: "Services",
-        navAbout: "About",
-        navContact: "Contact",
-        welcome: "Welcome to",
-        heroText: "A beautiful space to relax, refresh, and feel your best.",
-        bookNow: "Book on WhatsApp",
-        servicesTitle: "Our Services",
-        servicesIntro: "A little care can make every day feel special.",
-        hairTitle: "Hair Styling",
-        hairText: "Cuts, styling, and beautiful looks for every occasion.",
-        nailsTitle: "Nails",
-        nailsText: "Manicures and pedicures for perfectly cared-for nails.",
-        facialTitle: "Facials",
-        facialText: "Refreshing treatments to help your skin glow.",
-        makeupTitle: "Makeup",
-        makeupText: "Elegant makeup for celebrations and special events.",
-        browsTitle: "Brows & Beauty",
-        browsText: "Finishing touches that bring out your natural beauty.",
-        bridalTitle: "Bridal Beauty",
-        bridalText: "A memorable look for your most special day.",
-        aboutTitle: "About Nina Beauty Saloon",
-        aboutText: "At Nina Beauty Saloon, we believe everyone deserves time to feel confident and cared for. Visit us for a welcoming beauty experience made just for you.",
-        contactTitle: "Ready for your appointment?",
-        contactText: "Message us to ask about services and available times.",
-        contactButton: "Chat on WhatsApp",
-        whatsappLabel: "WhatsApp:"
+        announcement: "BEAUTY • CONFIDENCE • YOU",
+        home: "HOME", services: "SERVICES", about: "ABOUT", contact: "CONTACT",
+        heroEyebrow: "YOUR BEAUTY DESTINATION",
+        heroLine1: "Feel beautiful.", heroLine2: "Be yourself.",
+        heroDescription: "Step into a world of beauty and relaxation. From stunning hair to flawless nails, your moment to shine begins here.",
+        book: "BOOK APPOINTMENT", explore: "EXPLORE SERVICES",
+        servicesEyebrow: "WHAT WE DO",
+        servicesTitle: "Beauty services made for you",
+        servicesIntro: "Discover the little moments of care that help you look and feel amazing.",
+        hairTitle: "Hair Styling", hairText: "Beautiful cuts, styling and hair looks for every occasion.",
+        nailsTitle: "Nail Care", nailsText: "Manicures, pedicures and lovely finishing touches.",
+        makeupTitle: "Makeup", makeupText: "An elegant look for your celebration or special event.",
+        facialTitle: "Facials", facialText: "A refreshing beauty experience for glowing skin.",
+        browsTitle: "Brows & Beauty", browsText: "Details that highlight your natural beauty.",
+        bridalTitle: "Bridal Beauty", bridalText: "Feel wonderful and look unforgettable on your big day.",
+        hairDisplay: "Hair beauty", nailsDisplay: "Nail beauty",
+        aboutEyebrow: "WELCOME TO NINA",
+        aboutTitle: "Your time to feel beautiful",
+        aboutText: "Nina Beauty Saloon is a space to pause, relax and enjoy a little time for yourself. Explore our beauty services and get in touch to plan your visit.",
+        feature1: "Beauty for everyday and special occasions",
+        feature2: "A welcoming salon experience",
+        feature3: "Easy appointment booking on WhatsApp",
+        contactEyebrow: "LET'S MAKE IT A BEAUTIFUL DAY",
+        contactTitle: "Your beauty moment awaits",
+        contactText: "Message Nina Beauty Saloon to ask about services and book your appointment.",
+        chat: "CHAT ON WHATSAPP",
+        footer: "BEAUTY BEGINS HERE"
       },
 
       ar: {
-        navHome: "الرئيسية",
-        navServices: "الخدمات",
-        navAbout: "من نحن",
-        navContact: "تواصل معنا",
-        welcome: "مرحباً بكم في",
-        heroText: "مساحة جميلة للاسترخاء وتجديد نشاطك والشعور بأفضل حال.",
-        bookNow: "احجزي عبر واتساب",
-        servicesTitle: "خدماتنا",
-        servicesIntro: "القليل من العناية يجعل كل يوم مميزاً.",
-        hairTitle: "تصفيف الشعر",
-        hairText: "قصات وتسريحات وإطلالات جميلة لكل مناسبة.",
-        nailsTitle: "العناية بالأظافر",
-        nailsText: "مانيكير وباديكير لأظافر جميلة ومعتنى بها.",
-        facialTitle: "العناية بالبشرة",
-        facialText: "جلسات منعشة تساعد بشرتك على التألق.",
-        makeupTitle: "المكياج",
-        makeupText: "مكياج أنيق للاحتفالات والمناسبات الخاصة.",
-        browsTitle: "الحواجب والجمال",
-        browsText: "لمسات أخيرة تبرز جمالك الطبيعي.",
-        bridalTitle: "تجميل العرائس",
-        bridalText: "إطلالة لا تُنسى ليومك المميز.",
-        aboutTitle: "عن صالون نينا للتجميل",
-        aboutText: "في صالون نينا للتجميل، نؤمن بأن الجميع يستحق وقتاً للشعور بالثقة والاهتمام. زورينا لتجربة تجميلية دافئة تناسبك.",
-        contactTitle: "هل أنتِ مستعدة لحجز موعدك؟",
-        contactText: "راسِلينا للاستفسار عن الخدمات والمواعيد المتاحة.",
-        contactButton: "تواصلي عبر واتساب",
-        whatsappLabel: "واتساب:"
+        announcement: "الجمال • الثقة • أنتِ",
+        home: "الرئيسية", services: "الخدمات", about: "من نحن", contact: "تواصل معنا",
+        heroEyebrow: "وجهتكِ للجمال",
+        heroLine1: "اشعري بالجمال.", heroLine2: "كوني نفسكِ.",
+        heroDescription: "ادخلي عالماً من الجمال والاسترخاء. من الشعر الجميل إلى الأظافر الأنيقة، تبدأ لحظتكِ للتألق هنا.",
+        book: "احجزي موعداً", explore: "اكتشفي الخدمات",
+        servicesEyebrow: "ماذا نقدم",
+        servicesTitle: "خدمات تجميل تناسبكِ",
+        servicesIntro: "اكتشفي لحظات العناية التي تساعدكِ على الظهور والشعور بأفضل حال.",
+        hairTitle: "تصفيف الشعر", hairText: "قصات وتسريحات وإطلالات شعر جميلة لكل مناسبة.",
+        nailsTitle: "العناية بالأظافر", nailsText: "مانيكير وباديكير ولمسات نهائية جميلة.",
+        makeupTitle: "المكياج", makeupText: "إطلالة أنيقة للاحتفالات والمناسبات الخاصة.",
+        facialTitle: "العناية بالبشرة", facialText: "تجربة تجميل منعشة لبشرة مشرقة.",
+        browsTitle: "الحواجب والجمال", browsText: "تفاصيل تبرز جمالكِ الطبيعي.",
+        bridalTitle: "تجميل العرائس", bridalText: "اشعري بالجمال وتأَلقي بإطلالة لا تُنسى في يومكِ الكبير.",
+        hairDisplay: "جمال الشعر", nailsDisplay: "جمال الأظافر",
+        aboutEyebrow: "مرحباً بكِ في نينا",
+        aboutTitle: "حان وقتكِ لتشعري بالجمال",
+        aboutText: "صالون نينا للتجميل مساحة للاسترخاء والاستمتاع ببعض الوقت لنفسكِ. اكتشفي خدماتنا وتواصلي معنا للتخطيط لزيارتكِ.",
+        feature1: "جمال لكل يوم وللمناسبات الخاصة",
+        feature2: "تجربة صالون ترحيبية",
+        feature3: "حجز سهل عبر واتساب",
+        contactEyebrow: "لنجعل يومكِ أكثر جمالاً",
+        contactTitle: "لحظتكِ الجميلة بانتظاركِ",
+        contactText: "راسلي صالون نينا للتجميل للاستفسار عن الخدمات وحجز موعدكِ.",
+        chat: "تواصلي عبر واتساب",
+        footer: "الجمال يبدأ هنا"
       },
 
       fr: {
-        navHome: "Accueil",
-        navServices: "Services",
-        navAbout: "À propos",
-        navContact: "Contact",
-        welcome: "Bienvenue chez",
-        heroText: "Un bel espace pour vous détendre, vous ressourcer et vous sentir au mieux.",
-        bookNow: "Réserver sur WhatsApp",
-        servicesTitle: "Nos services",
-        servicesIntro: "Un peu d'attention rend chaque journée spéciale.",
-        hairTitle: "Coiffure",
-        hairText: "Coupes, coiffures et looks élégants pour chaque occasion.",
-        nailsTitle: "Ongles",
-        nailsText: "Manucures et pédicures pour des ongles soignés.",
-        facialTitle: "Soins du visage",
-        facialText: "Des soins rafraîchissants pour une peau éclatante.",
-        makeupTitle: "Maquillage",
-        makeupText: "Un maquillage élégant pour vos fêtes et événements.",
-        browsTitle: "Sourcils et beauté",
-        browsText: "Des touches finales qui révèlent votre beauté naturelle.",
-        bridalTitle: "Beauté de la mariée",
-        bridalText: "Un look inoubliable pour votre grand jour.",
-        aboutTitle: "À propos de Nina Beauty Saloon",
-        aboutText: "Chez Nina Beauty Saloon, nous pensons que chacun mérite de prendre du temps pour soi et de se sentir bien. Venez profiter d'une expérience beauté accueillante et personnalisée.",
-        contactTitle: "Prête à prendre rendez-vous ?",
-        contactText: "Écrivez-nous pour connaître nos services et nos disponibilités.",
-        contactButton: "Discuter sur WhatsApp",
-        whatsappLabel: "WhatsApp :"
+        announcement: "BEAUTÉ • CONFIANCE • VOUS",
+        home: "ACCUEIL", services: "SERVICES", about: "À PROPOS", contact: "CONTACT",
+        heroEyebrow: "VOTRE DESTINATION BEAUTÉ",
+        heroLine1: "Sentez-vous belle.", heroLine2: "Soyez vous-même.",
+        heroDescription: "Entrez dans un univers de beauté et de détente. Des cheveux magnifiques aux ongles soignés, votre moment pour rayonner commence ici.",
+        book: "PRENDRE RENDEZ-VOUS", explore: "DÉCOUVRIR LES SERVICES",
+        servicesEyebrow: "NOS PRESTATIONS",
+        servicesTitle: "Des services beauté pour vous",
+        servicesIntro: "Découvrez ces instants de soin qui vous aident à vous sentir merveilleusement bien.",
+        hairTitle: "Coiffure", hairText: "Coupes et coiffures élégantes pour chaque occasion.",
+        nailsTitle: "Soins des ongles", nailsText: "Manucures, pédicures et jolies finitions.",
+        makeupTitle: "Maquillage", makeupText: "Un look élégant pour vos fêtes et événements spéciaux.",
+        facialTitle: "Soins du visage", facialText: "Une expérience rafraîchissante pour une peau éclatante.",
+        browsTitle: "Sourcils et beauté", browsText: "Des détails qui révèlent votre beauté naturelle.",
+        bridalTitle: "Beauté de la mariée", bridalText: "Rayonnez avec un look inoubliable pour votre grand jour.",
+        hairDisplay: "Beauté des cheveux", nailsDisplay: "Beauté des ongles",
+        aboutEyebrow: "BIENVENUE CHEZ NINA",
+        aboutTitle: "Votre moment pour vous sentir belle",
+        aboutText: "Nina Beauty Saloon est un espace pour faire une pause, vous détendre et prendre du temps pour vous. Découvrez nos services et contactez-nous pour organiser votre visite.",
+        feature1: "La beauté au quotidien et pour les grandes occasions",
+        feature2: "Une expérience accueillante",
+        feature3: "Réservation facile sur WhatsApp",
+        contactEyebrow: "EMBELLISSONS VOTRE JOURNÉE",
+        contactTitle: "Votre moment beauté vous attend",
+        contactText: "Écrivez à Nina Beauty Saloon pour découvrir nos services et prendre rendez-vous.",
+        chat: "DISCUTER SUR WHATSAPP",
+        footer: "LA BEAUTÉ COMMENCE ICI"
       }
     };
 
@@ -457,13 +955,13 @@
       document.body.dir = document.documentElement.dir;
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        element.textContent = translations[lang][key];
+        element.textContent = translations[lang][element.dataset.i18n];
       });
 
       document.querySelectorAll("[data-lang]").forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-        button.setAttribute("aria-pressed", button.dataset.lang === lang);
+        const active = button.dataset.lang === lang;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", active);
       });
 
       localStorage.setItem("ninaLanguage", lang);
@@ -477,13 +975,22 @@
       link.href = `https://wa.me/${whatsappNumber}`;
     });
 
-    document.querySelector(".contact-details .whatsapp-link").textContent =
-      `+${whatsappNumber}`;
-
+    document.getElementById("phoneDisplay").textContent = `+${whatsappNumber}`;
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const savedLanguage = localStorage.getItem("ninaLanguage");
     setLanguage(translations[savedLanguage] ? savedLanguage : "en");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .1 });
+
+    document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
   </script>
 </body>
 </html>
