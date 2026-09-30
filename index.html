@@ -263,6 +263,24 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* Realistic AI beauty photos */
+.hero-art{height:auto;min-height:420px}
+.hero-real-photo{width:100%;max-width:450px;aspect-ratio:4/5;object-fit:cover;border-radius:220px 220px 18px 18px;box-shadow:0 20px 55px #633d5026;animation:float 6s ease-in-out infinite}
+.card{overflow:hidden}
+.service-photo{margin:-30px -30px 24px;aspect-ratio:4/3;overflow:hidden}
+.service-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+.card:hover .service-photo img{transform:scale(1.07)}
+.lips-panel{overflow:hidden}
+.lips-real-photo{width:100%;height:100%;min-height:350px;object-fit:cover;display:block;transition:transform .7s}
+.lips-panel:hover .lips-real-photo{transform:scale(1.04)}
+.profile-gallery{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;margin-top:65px}
+.profile-gallery img{width:100%;max-height:420px;object-fit:cover;border-radius:14px}
+.profile-gallery h3{font-size:32px;margin:0 0 15px}
+.profile-gallery p{color:var(--muted);line-height:1.8}
+.ai-photo-note{font-size:12px;color:var(--muted);text-align:center;line-height:1.6;margin:30px auto 0;max-width:760px}
+@media(max-width:700px){.profile-gallery{grid-template-columns:1fr}.hero-art{min-height:0;height:auto}.hero-real-photo{max-width:380px}}
+
 </style>
 </head>
 
@@ -307,46 +325,7 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
       </div>
     </div>
 
-    <div class="hero-art" role="img" aria-label="Animated beauty illustration">
-      <div class="art-circle"></div>
-      <span class="floating f1" aria-hidden="true">💅</span>
-      <span class="floating f2" aria-hidden="true">💄</span>
-      <span class="floating f3" aria-hidden="true">✂️</span>
-      <span class="floating f4" aria-hidden="true">👄</span>
-
-      <svg class="woman" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="#271924"/>
-            <stop offset="1" stop-color="#71475b"/>
-          </linearGradient>
-          <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="#f2c5aa"/>
-            <stop offset="1" stop-color="#d9967f"/>
-          </linearGradient>
-        </defs>
-        <path d="M103 145C81 65 140 20 209 25c92 7 120 76 104 158-12 63 47 134 59 206 9 54-18 90-55 108H71c-35-33-41-77-17-122 42-80 22-160 49-230Z" fill="url(#hair)"/>
-        <path d="M169 249h65v79h-65z" fill="url(#skin)"/>
-        <path d="M159 302c-55 13-96 40-112 79L24 500h352l-24-119c-15-40-60-67-108-79l-42 55-43-55Z" fill="#85465f"/>
-        <path d="M159 302l43 55 42-55-43 83-42-83Z" fill="#edbea5"/>
-        <path d="M120 130c0-54 34-85 82-85 57 0 88 37 86 92l-9 79c-6 58-39 92-77 92-41 0-73-39-78-92l-4-86Z" fill="url(#skin)"/>
-        <path d="M119 162c9-46 36-74 64-91 31 32 66 39 104 45-3-60-39-94-91-88-61 6-91 63-77 134Z" fill="url(#hair)"/>
-        <path d="M122 137c-10 89-7 138-33 181-9-66-11-124 15-176Z" fill="#372232"/>
-        <path d="M276 107c-5 66 9 120 5 180 25-43 31-119 14-163Z" fill="#372232"/>
-        <path d="M142 183c14-8 27-8 39-2m45 0c13-8 28-7 40 2" fill="none" stroke="#69403d" stroke-width="5" stroke-linecap="round"/>
-        <path d="M146 200c10 7 21 7 31 0m54 0c10 7 21 7 31 0" fill="none" stroke="#3d2730" stroke-width="4" stroke-linecap="round"/>
-        <path d="M204 204l-5 36c5 4 12 4 17 0" fill="none" stroke="#bd806f" stroke-width="3" stroke-linecap="round"/>
-        <path d="M177 262c15 6 34 6 51-1-15 18-36 19-51 1Z" fill="#a34560"/>
-        <ellipse cx="149" cy="229" rx="15" ry="8" fill="#cf727b" opacity=".25"/>
-        <ellipse cx="257" cy="229" rx="15" ry="8" fill="#cf727b" opacity=".25"/>
-        <circle cx="120" cy="213" r="5" fill="#efca90"/>
-        <circle cx="284" cy="213" r="5" fill="#efca90"/>
-        <path d="M120 217v20m164-20v20" stroke="#efca90" stroke-width="3"/>
-        <circle cx="120" cy="240" r="6" fill="#efca90"/>
-        <circle cx="284" cy="240" r="6" fill="#efca90"/>
-        <path d="M127 84c37-43 98-42 136-8" fill="none" stroke="#ba829c" opacity=".3" stroke-width="7" stroke-linecap="round"/>
-      </svg>
-    </div>
+    <div class="hero-art"><img class="hero-real-photo" src="images/hair.jpg" alt="AI-generated portrait of a woman with flowing brunette hair" width="1000" height="1000"></div>
   </div>
 </section>
 
@@ -362,32 +341,32 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
 
     <div class="services-grid">
       <article class="card reveal">
-        <div class="icon">💇‍♀️</div>
+        <div class="service-photo"><img src="images/hair.jpg" alt="AI-generated hair beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="hairTitle">Hair Styling</h3>
         <p data-i18n="hairText">Cuts and styling for everyday looks and special occasions.</p>
       </article>
       <article class="card reveal">
-        <div class="icon">💅</div>
+        <div class="service-photo"><img src="images/nails.jpg" alt="AI-generated nails beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="nailsTitle">Nail Care</h3>
         <p data-i18n="nailsText">Manicures, pedicures and beautiful finishing touches.</p>
       </article>
       <article class="card reveal">
-        <div class="icon">💄</div>
+        <div class="service-photo"><img src="images/makeup.jpg" alt="AI-generated makeup beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="makeupTitle">Makeup</h3>
         <p data-i18n="makeupText">An elegant look for your celebration or special event.</p>
       </article>
       <article class="card reveal">
-        <div class="icon">🧖‍♀️</div>
+        <div class="service-photo"><img src="images/facials.jpg" alt="AI-generated facials beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="facialTitle">Facials</h3>
         <p data-i18n="facialText">A refreshing beauty experience and a moment to relax.</p>
       </article>
       <article class="card reveal">
-        <div class="icon">✨</div>
+        <div class="service-photo"><img src="images/brows.jpg" alt="AI-generated brows beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="browsTitle">Brows & Beauty</h3>
         <p data-i18n="browsText">Finishing touches that highlight your natural beauty.</p>
       </article>
       <article class="card reveal">
-        <div class="icon">👰‍♀️</div>
+        <div class="service-photo"><img src="images/bridal.jpg" alt="AI-generated bridal beauty illustration" width="1000" height="1000" loading="lazy"></div>
         <h3 data-i18n="bridalTitle">Bridal Beauty</h3>
         <p data-i18n="bridalText">Plan your beauty look for your most special day.</p>
       </article>
@@ -397,24 +376,7 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
 
 <section class="section aesthetics" id="aesthetics">
   <div class="container aesthetic-grid">
-    <div class="lips-panel reveal" role="img" aria-label="Animated illustration of lips">
-      <span class="sparkle one" aria-hidden="true">✦</span>
-      <span class="sparkle two" aria-hidden="true">✦</span>
-
-      <svg class="lips-art" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="lipColor" x1="0" y1="0" x2="0" y2="1">
-            <stop stop-color="#de718f"/>
-            <stop offset="1" stop-color="#9a365c"/>
-          </linearGradient>
-        </defs>
-        <path d="M25 103C70 75 94 40 133 58c15 7 20 20 27 20s14-14 29-20c39-16 63 17 106 45-48 17-90 27-135 26-46 1-91-11-135-26Z" fill="url(#lipColor)"/>
-        <path d="M25 103c38 51 85 78 135 78s99-27 135-78c-45 9-84 16-135 16s-92-7-135-16Z" fill="#c6577d"/>
-        <path d="M26 103c48 6 91 11 134 10 46 1 88-5 134-10-49 18-89 25-134 25-46 0-87-8-134-25Z" fill="#733147"/>
-        <path d="M92 143c36 17 76 20 109 7" fill="none" stroke="#f3a9ba" stroke-width="9" stroke-linecap="round" opacity=".6"/>
-        <path d="M83 81c18-13 31-17 46-9" fill="none" stroke="#f8bac8" stroke-width="6" stroke-linecap="round" opacity=".5"/>
-      </svg>
-    </div>
+    <div class="lips-panel reveal"><img class="lips-real-photo" src="images/lips.jpg" alt="AI-generated illustrative close-up of lips" width="1000" height="1000" loading="lazy"></div>
 
     <div class="aesthetic-copy reveal">
       <span class="eyebrow" data-i18n="aestheticEyebrow">AESTHETIC ENQUIRIES</span>
@@ -428,6 +390,8 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
     </div>
   </div>
 </section>
+
+<section class="section"><div class="container"><div class="profile-gallery reveal"><img src="images/nose.jpg" alt="AI-generated side-profile portrait" width="1000" height="1000" loading="lazy"><div><h3 data-i18n="profileTitle">Profile & Beauty Gallery</h3><p data-i18n="profileText">An illustrative profile portrait. Contact Nina to confirm which aesthetic services are available.</p><a class="button secondary" href="https://www.instagram.com/injectionlyon69/" target="_blank" rel="noopener noreferrer" data-i18n="viewInstagram">VIEW INSTAGRAM</a></div></div><p class="ai-photo-note" data-i18n="photoDisclosure">Photos are AI-generated illustrations, not actual clients or treatment results.</p></div></section>
 
 <section class="section about">
   <div class="container about-box reveal">
@@ -484,6 +448,9 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
 <script>
 const translations={
 en:{
+  profileTitle:"Profile & Beauty Gallery",
+  profileText:"An illustrative profile portrait. Contact Nina to confirm which aesthetic services are available.",
+  photoDisclosure:"Photos are AI-generated illustrations, not actual clients or treatment results.",
   announcement:"BEAUTY • CONFIDENCE • YOU",
   home:"HOME",services:"SERVICES",aesthetics:"AESTHETICS",contact:"CONTACT",
   heroEyebrow:"YOUR BEAUTY DESTINATION",
@@ -517,6 +484,9 @@ en:{
   chat:"CHAT ON WHATSAPP",footer:"BEAUTY BEGINS HERE"
 },
 ar:{
+  profileTitle:"معرض جمال ملامح الوجه",
+  profileText:"صورة جانبية توضيحية للوجه. تواصلي مع نينا للتأكد من الخدمات التجميلية المتاحة.",
+  photoDisclosure:"الصور توضيحية مولّدة بالذكاء الاصطناعي، وليست صوراً لعميلات أو لنتائج علاجات.",
   announcement:"الجمال • الثقة • أنتِ",
   home:"الرئيسية",services:"الخدمات",aesthetics:"التجميل",contact:"تواصل معنا",
   heroEyebrow:"وجهتكِ للجمال",
@@ -550,6 +520,9 @@ ar:{
   chat:"تواصلي عبر واتساب",footer:"الجمال يبدأ هنا"
 },
 fr:{
+  profileTitle:"Galerie beauté et profil",
+  profileText:"Un portrait de profil illustratif. Contactez Nina pour confirmer les services esthétiques disponibles.",
+  photoDisclosure:"Les photos sont des illustrations générées par IA, et non des photos de clientes ou de résultats de traitements.",
   announcement:"BEAUTÉ • CONFIANCE • VOUS",
   home:"ACCUEIL",services:"SERVICES",aesthetics:"ESTHÉTIQUE",contact:"CONTACT",
   heroEyebrow:"VOTRE DESTINATION BEAUTÉ",
