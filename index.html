@@ -1,1009 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#3c2330">
-  <meta name="description" content="Nina Beauty Saloon — hair, nails, makeup and beauty services.">
-  <title>Nina Beauty Saloon | Beauty Begins Here</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --dark: #30212a;
-      --plum: #633d50;
-      --rose: #b86c82;
-      --pink: #f7e5e7;
-      --cream: #fffaf6;
-      --gold: #bf9565;
-      --muted: #766870;
-      --white: #fff;
-      --shadow: 0 20px 55px rgba(63, 37, 49, .11);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--cream);
-      color: var(--dark);
-      font-family: "DM Sans", Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
-    body[dir="rtl"] { font-family: Tahoma, Arial, sans-serif; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    .announcement {
-      padding: 8px 15px;
-      background: var(--dark);
-      color: #fff;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 250, 246, .96);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(99, 61, 80, .09);
-    }
-
-    .nav {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
-      flex-direction: column;
-      color: var(--plum);
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .brand strong {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 29px;
-      letter-spacing: 5px;
-    }
-
-    .brand small {
-      margin-top: 7px;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-align: center;
-    }
-
-    .nav-links, .languages {
-      display: flex;
-      align-items: center;
-      gap: 23px;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 700;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover { color: var(--rose); }
-    .languages { gap: 5px; }
-
-    .languages button {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      padding: 8px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-      border-radius: 7px;
-    }
-
-    .languages button.active {
-      color: var(--plum);
-      background: var(--pink);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 74% 45%, #f6d9df 0, transparent 34%),
-        linear-gradient(120deg, #fffaf6 18%, #f9eff0 100%);
-    }
-
-    .hero::before, .hero::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(184, 108, 130, .15);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      width: 540px;
-      height: 540px;
-      inset-inline-end: -120px;
-      top: -260px;
-    }
-
-    .hero::after {
-      width: 360px;
-      height: 360px;
-      inset-inline-start: -200px;
-      bottom: -230px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 35px;
-      padding-block: 70px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--rose);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: currentColor;
-    }
-
-    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; }
-
-    h1 {
-      font-size: clamp(51px, 6.6vw, 91px);
-      line-height: 1.09;
-      letter-spacing: -2px;
-      margin: 18px 0;
-      font-weight: 600;
-    }
-
-    h1 em {
-      display: block;
-      color: var(--rose);
-      font-weight: 500;
-    }
-
-    .hero-copy p {
-      max-width: 510px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 16px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 49px;
-      padding: 12px 23px;
-      border-radius: 3px;
-      font-size: 13px;
-      font-weight: 700;
-      transition: transform .25s, background .25s, box-shadow .25s;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(63, 37, 49, .16);
-    }
-
-    .button.primary {
-      background: var(--plum);
-      color: white;
-    }
-
-    .button.secondary {
-      border: 1px solid var(--plum);
-      color: var(--plum);
-    }
-
-    .hero-art {
-      position: relative;
-      height: 540px;
-      display: grid;
-      place-items: center;
-    }
-
-    .art-circle {
-      position: absolute;
-      width: min(490px, 95%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: linear-gradient(140deg, #f8dfe1, #d6a1af);
-      box-shadow: inset 0 0 0 18px rgba(255,255,255,.28);
-      animation: breathe 5s ease-in-out infinite;
-    }
-
-    .woman-art {
-      position: relative;
-      z-index: 2;
-      width: min(440px, 91%);
-      max-height: 520px;
-      filter: drop-shadow(0 25px 22px rgba(66, 35, 48, .19));
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .floating-item {
-      position: absolute;
-      z-index: 4;
-      display: grid;
-      place-items: center;
-      width: 75px;
-      height: 75px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.9);
-      box-shadow: var(--shadow);
-      font-size: 32px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .float-one { top: 32px; inset-inline-start: 10px; }
-    .float-two { top: 155px; inset-inline-end: -8px; animation-delay: -1.4s; }
-    .float-three { bottom: 32px; inset-inline-start: 15px; animation-delay: -2.7s; }
-
-    .sparkle {
-      position: absolute;
-      z-index: 3;
-      color: var(--gold);
-      font-size: 29px;
-      animation: twinkle 2.5s ease-in-out infinite;
-    }
-
-    .sparkle.s1 { top: 65px; inset-inline-end: 80px; }
-    .sparkle.s2 { bottom: 70px; inset-inline-end: 85px; animation-delay: 1s; }
-
-    .strip {
-      background: var(--plum);
-      color: #fff;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .strip-track {
-      display: flex;
-      width: max-content;
-      gap: 45px;
-      padding: 15px 0;
-      animation: marquee 25s linear infinite;
-    }
-
-    .strip-track span {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .strip-track b { color: #e7bb9f; }
-
-    section.section { padding: 100px 0; }
-
-    .section-top {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-top h2 {
-      font-size: clamp(34px, 4.2vw, 55px);
-      font-weight: 500;
-      margin: 13px 0 10px;
-    }
-
-    .section-top p {
-      max-width: 590px;
-      margin: auto;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 265px;
-      padding: 30px;
-      background: #fff;
-      border: 1px solid #f1e2e5;
-      box-shadow: 0 10px 32px rgba(63, 37, 49, .04);
-      transition: transform .35s, box-shadow .35s, background .35s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-9px);
-      box-shadow: var(--shadow);
-      background: #fff9f9;
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      width: 145px;
-      height: 145px;
-      border-radius: 50%;
-      background: #faeaec;
-      top: -66px;
-      inset-inline-end: -50px;
-      transition: transform .4s;
-    }
-
-    .service-card:hover::after { transform: scale(1.4); }
-
-    .service-icon {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      place-items: center;
-      width: 68px;
-      height: 68px;
-      background: var(--pink);
-      border-radius: 50%;
-      font-size: 32px;
-      transition: transform .45s;
-    }
-
-    .service-card:hover .service-icon {
-      transform: rotate(-10deg) scale(1.13);
-    }
-
-    .service-card h3 {
-      position: relative;
-      z-index: 1;
-      font-size: 24px;
-      margin: 25px 0 10px;
-    }
-
-    .service-card p {
-      position: relative;
-      z-index: 1;
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .experience { background: #f7eceb; }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .beauty-display {
-      min-height: 440px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 17px;
-    }
-
-    .visual-tile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 140px 140px 12px 12px;
-      background: linear-gradient(140deg, #e7bdc6, #a6687d);
-      color: #fff;
-      box-shadow: var(--shadow);
-      transition: transform .4s;
-      min-height: 300px;
-    }
-
-    .visual-tile:hover { transform: translateY(-10px); }
-
-    .visual-tile:nth-child(2) {
-      margin-top: 60px;
-      background: linear-gradient(140deg, #e9d6bc, #bc8e77);
-    }
-
-    .visual-tile .tile-art {
-      font-size: clamp(95px, 12vw, 160px);
-      line-height: 1.2;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .visual-tile:nth-child(2) .tile-art { animation-delay: -2s; }
-
-    .visual-tile span:last-child {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 21px;
-      margin-top: 15px;
-    }
-
-    .experience-copy h2 {
-      font-size: clamp(36px, 4vw, 54px);
-      line-height: 1.2;
-      font-weight: 500;
-      margin: 18px 0;
-    }
-
-    .experience-copy p {
-      line-height: 1.9;
-      color: var(--muted);
-      margin-bottom: 26px;
-    }
-
-    .feature {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin: 15px 0;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .feature i {
-      width: 28px;
-      height: 28px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #fff;
-      color: var(--rose);
-      font-style: normal;
-      flex: none;
-    }
-
-    .cta {
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 15% 80%, rgba(255,255,255,.1), transparent 25%),
-        radial-gradient(circle at 85% 15%, rgba(255,255,255,.1), transparent 25%),
-        var(--plum);
-      color: white;
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: clamp(39px, 5vw, 65px);
-      font-weight: 500;
-      margin: 18px 0;
-    }
-
-    .cta p { color: #f3e2e7; }
-
-    .cta .button {
-      margin-top: 20px;
-      background: #fff;
-      color: var(--plum);
-    }
-
-    .contact-number {
-      display: block;
-      width: fit-content;
-      margin: 25px auto 0;
-      color: #f2d2dc;
-      font-size: 15px;
-    }
-
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 22px;
-      padding: 12px 18px;
-      border: 1px solid rgba(255,255,255,.65);
-      border-radius: 30px;
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .25s, background .25s;
-    }
-
-    .instagram-link:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,.12);
-    }
-
-    footer {
-      background: #271d23;
-      color: #ebdfe4;
-      text-align: center;
-      padding: 27px 15px;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: .35; transform: scale(.8); }
-      50% { opacity: 1; transform: scale(1.25); }
-    }
-
-    @keyframes marquee {
-      to { transform: translateX(-50%); }
-    }
-
-    @media (max-width: 950px) {
-      .nav { flex-wrap: wrap; justify-content: center; padding-block: 15px; }
-      .brand { margin-inline-end: auto; }
-      .hero-art { height: 430px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .experience-grid { gap: 35px; }
-    }
-
-    @media (max-width: 700px) {
-      .brand { width: 100%; align-items: center; margin: 0; }
-      .nav-links { width: 100%; justify-content: center; gap: 17px; }
-      .languages { justify-content: center; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; padding-top: 65px; }
-      .eyebrow { justify-content: center; }
-      .hero-copy p { margin-inline: auto; }
-      .buttons { justify-content: center; }
-      .hero-art { height: 440px; }
-      .art-circle { width: 390px; max-width: 90%; }
-      .woman-art { width: 345px; }
-      .floating-item { width: 61px; height: 61px; font-size: 26px; }
-      .services-grid, .experience-grid { grid-template-columns: 1fr; }
-      .beauty-display { max-width: 470px; margin: auto; width: 100%; }
-      section.section { padding: 75px 0; }
-    }
-
-    @media (max-width: 430px) {
-      .nav-links { gap: 12px; }
-      .nav-links a { font-size: 11px; }
-      .hero-art { height: 365px; }
-      .woman-art { width: 290px; }
-      .beauty-display { min-height: 310px; gap: 10px; }
-      .visual-tile { min-height: 250px; }
-      .visual-tile:nth-child(2) { margin-top: 35px; }
-      .visual-tile .tile-art { font-size: 85px; }
-      .visual-tile span:last-child { font-size: 17px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#633d50">
+<meta name="description" content="Nina Beauty Saloon — beauty services and lip injection enquiries. Contact us on WhatsApp or Instagram.">
+<title>Nina Beauty Saloon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --dark:#30212a;
+  --plum:#633d50;
+  --rose:#b86c82;
+  --pink:#f7e5e7;
+  --cream:#fffaf6;
+  --gold:#bf9565;
+  --muted:#766870;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--dark);
+  font-family:"DM Sans",Arial,sans-serif;
+}
+body[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+.announcement{
+  padding:9px 15px;
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:2px;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,250,246,.97);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #eee0e5;
+}
+.nav{
+  min-height:85px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.brand{display:flex;flex-direction:column;text-align:center;color:var(--plum)}
+.brand strong{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:30px;
+  letter-spacing:5px;
+}
+.brand small{font-size:9px;letter-spacing:3px}
+.nav-links,.languages{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:12px;font-weight:700}
+.nav-links a:hover{color:var(--rose)}
+.languages{gap:4px}
+.languages button{
+  padding:8px;
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:12px;
+  font-weight:700;
+}
+.languages button.active{background:var(--pink);color:var(--plum)}
+.hero{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 75% 45%,#f1ced8,transparent 38%),
+    linear-gradient(120deg,#fffaf6,#f9edef);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  padding-block:75px;
+}
+.eyebrow{
+  color:var(--rose);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif}
+h1{font-size:clamp(48px,6.5vw,86px);line-height:1.12;margin:20px 0}
+h1 em{display:block;color:var(--rose);font-weight:500}
+.hero-copy p{color:var(--muted);font-size:16px;line-height:1.9;max-width:510px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:49px;
+  padding:13px 22px;
+  border-radius:4px;
+  font-size:13px;
+  font-weight:700;
+  transition:transform .25s,box-shadow .25s;
+}
+.button:hover{transform:translateY(-3px);box-shadow:0 10px 25px #633d5026}
+.primary{background:var(--plum);color:white}
+.secondary{border:1px solid var(--plum);color:var(--plum)}
+.hero-art{position:relative;height:510px;display:grid;place-items:center}
+.art-circle{
+  position:absolute;
+  width:min(450px,95%);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f8dfe1,#d6a1af);
+  box-shadow:inset 0 0 0 18px #ffffff40;
+  animation:breathe 5s ease-in-out infinite;
+}
+.woman{
+  position:relative;
+  z-index:2;
+  width:min(390px,90%);
+  filter:drop-shadow(0 20px 20px #633d5033);
+  animation:float 5s ease-in-out infinite;
+}
+.floating{
+  position:absolute;
+  z-index:3;
+  width:65px;
+  height:65px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fffffff0;
+  box-shadow:0 15px 35px #633d5020;
+  font-size:30px;
+  animation:float 4s ease-in-out infinite;
+}
+.f1{top:25px;inset-inline-start:5px}
+.f2{top:150px;inset-inline-end:0;animation-delay:-1s}
+.f3{bottom:25px;inset-inline-start:15px;animation-delay:-2s}
+.f4{bottom:35px;inset-inline-end:15px;animation-delay:-3s}
+.strip{background:var(--plum);color:white;text-align:center;padding:16px;font-size:12px;letter-spacing:2px}
+.section{padding:85px 0}
+.section-top{text-align:center;margin-bottom:42px}
+.section-top h2{font-size:clamp(32px,4vw,50px);font-weight:500;margin:14px 0}
+.section-top p{color:var(--muted);line-height:1.8;max-width:620px;margin:auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  position:relative;
+  padding:30px;
+  background:white;
+  border:1px solid #eee0e5;
+  border-radius:8px;
+  box-shadow:0 8px 25px #633d5008;
+  transition:transform .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 45px #633d5018}
+.icon{
+  display:grid;
+  place-items:center;
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background:var(--pink);
+  font-size:32px;
+}
+.card:hover .icon{animation:float 2s ease-in-out infinite}
+.card h3{font-size:25px;margin:22px 0 10px}
+.card p{color:var(--muted);line-height:1.8;font-size:14px;margin:0}
+.aesthetics{background:linear-gradient(135deg,#f8e7eb,#fff6ee)}
+.aesthetic-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:65px}
+.lips-panel{
+  position:relative;
+  min-height:350px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:160px 160px 20px 20px;
+  background:linear-gradient(145deg,#f3ced8,#bd7b91);
+  box-shadow:0 20px 55px #633d5020;
+}
+.lips-art{width:min(300px,80%);animation:float 5s ease-in-out infinite}
+.lips-panel .sparkle{position:absolute;color:#fff1c9;font-size:32px;animation:twinkle 3s infinite}
+.sparkle.one{top:55px;left:45px}
+.sparkle.two{bottom:55px;right:45px;animation-delay:1s}
+.aesthetic-copy h2{font-size:clamp(35px,4vw,52px);line-height:1.2;margin:15px 0}
+.aesthetic-copy p{color:var(--muted);line-height:1.9}
+.treatment-label{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 14px;
+  border-radius:30px;
+  background:white;
+  color:var(--plum);
+  font-size:13px;
+  font-weight:700;
+}
+.about{background:#fff}
+.about-box{max-width:780px;margin:auto;text-align:center}
+.about-box p{color:var(--muted);line-height:1.9}
+.features{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin-top:30px}
+.features span{font-size:13px;color:var(--plum)}
+.cta{background:var(--plum);color:white;text-align:center}
+.cta h2{font-size:clamp(36px,5vw,60px);margin:17px 0}
+.cta p{color:#f1dfe6;line-height:1.8}
+.cta .eyebrow{color:#f5cbd5}
+.cta .button{background:white;color:var(--plum)}
+.contact-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
+.instagram{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:13px 22px;
+  border:1px solid #ffffff90;
+  border-radius:4px;
+  font-size:14px;
+  font-weight:700;
+  transition:background .25s,transform .25s;
+}
+.instagram:hover{background:#ffffff15;transform:translateY(-3px)}
+.phone{display:block;width:fit-content;margin:24px auto 0;color:#f5d4df}
+footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font-size:12px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes twinkle{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+@media(max-width:950px){
+  .nav{flex-wrap:wrap;justify-content:center;padding-block:15px}
+  .brand{margin-inline-end:auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .aesthetic-grid{gap:35px}
+}
+@media(max-width:700px){
+  .brand{width:100%;align-items:center;margin:0}
+  .nav-links{width:100%;justify-content:center;gap:16px}
+  .hero-grid,.aesthetic-grid{grid-template-columns:1fr}
+  .hero-copy{text-align:center}
+  .hero-copy p{margin-inline:auto}
+  .buttons{justify-content:center}
+  .hero-art{height:420px}
+  .woman{width:320px}
+  .services-grid{grid-template-columns:1fr}
+  .section{padding:65px 0}
+  .lips-panel{max-width:450px;width:100%;margin:auto}
+  .aesthetic-copy{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
-  <div class="announcement" data-i18n="announcement">
-    BEAUTY • CONFIDENCE • YOU
-  </div>
+<div class="announcement" data-i18n="announcement">BEAUTY • CONFIDENCE • YOU</div>
 
-  <header>
-    <nav class="nav container">
-      <a href="#home" class="brand" aria-label="Nina Beauty Saloon">
-        <strong>NINA</strong>
-        <small>BEAUTY SALOON</small>
-      </a>
+<header>
+  <nav class="nav container">
+    <a href="#home" class="brand">
+      <strong>NINA</strong>
+      <small>BEAUTY SALOON</small>
+    </a>
 
-      <div class="nav-links">
-        <a href="#home" data-i18n="home">HOME</a>
-        <a href="#services" data-i18n="services">SERVICES</a>
-        <a href="#about" data-i18n="about">ABOUT</a>
-        <a href="#contact" data-i18n="contact">CONTACT</a>
-      </div>
+    <div class="nav-links">
+      <a href="#home" data-i18n="home">HOME</a>
+      <a href="#services" data-i18n="services">SERVICES</a>
+      <a href="#aesthetics" data-i18n="aesthetics">AESTHETICS</a>
+      <a href="#contact" data-i18n="contact">CONTACT</a>
+    </div>
 
-      <div class="languages" aria-label="Choose language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="ar">العربية</button>
-        <button type="button" data-lang="fr">FR</button>
-      </div>
-    </nav>
-  </header>
+    <div class="languages" aria-label="Choose language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ar">العربية</button>
+      <button type="button" data-lang="fr">FR</button>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow" data-i18n="heroEyebrow">YOUR BEAUTY DESTINATION</div>
-          <h1>
-            <span data-i18n="heroLine1">Feel beautiful.</span>
-            <em data-i18n="heroLine2">Be yourself.</em>
-          </h1>
-          <p data-i18n="heroDescription">
-            Step into a world of beauty and relaxation. From stunning hair to flawless nails, your moment to shine begins here.
-          </p>
-          <div class="buttons">
-            <a href="https://wa.me/33651600511" class="button primary whatsapp-link" target="_blank" rel="noopener noreferrer" data-i18n="book">
-              BOOK APPOINTMENT
-            </a>
-            <a href="#services" class="button secondary" data-i18n="explore">
-              EXPLORE SERVICES
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-art" role="img" aria-label="Animated illustration of a woman with flowing hair and beauty icons">
-          <div class="art-circle"></div>
-          <span class="sparkle s1">✦</span>
-          <span class="sparkle s2">✦</span>
-          <span class="floating-item float-one" aria-hidden="true">💅</span>
-          <span class="floating-item float-two" aria-hidden="true">💄</span>
-          <span class="floating-item float-three" aria-hidden="true">✂️</span>
-
-          <svg class="woman-art" viewBox="0 0 450 530" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#2c1b25"/>
-                <stop offset=".55" stop-color="#513141"/>
-                <stop offset="1" stop-color="#21151c"/>
-              </linearGradient>
-              <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#9d546b"/>
-                <stop offset="1" stop-color="#603246"/>
-              </linearGradient>
-              <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#efbd9e"/>
-                <stop offset="1" stop-color="#d48e76"/>
-              </linearGradient>
-            </defs>
-
-            <path d="M138 142C116 65 170 25 243 37c88 14 120 93 92 176-21 61 44 130 72 192 18 41 3 83-39 99H77c-46-41-18-94 5-142 34-71 12-151 56-220Z" fill="url(#hair)"/>
-            <path d="M139 145C90 212 127 270 90 347c-17 37-42 70-26 122 31-26 56-63 67-106 22-89-15-144 33-201Z" fill="#674254" opacity=".85"/>
-            <path d="M304 132c60 76 15 157 54 244 16 36 31 61 52 79-9-73-62-113-58-193 2-50 3-92-48-130Z" fill="#674254" opacity=".8"/>
-            <path d="M197 255h67v83h-67z" fill="url(#skin)"/>
-            <path d="M177 305c-42 13-87 29-107 70L42 530h367l-29-155c-16-41-66-57-108-70l-41 48-54-48Z" fill="url(#dress)"/>
-            <path d="M177 305l54 48 41-48-38 83-57-83Z" fill="#f4d2bf"/>
-            <path d="M70 375c28 45 35 98 34 155H42l28-155Zm310 0c-26 45-35 98-34 155h63l-29-155Z" fill="#4d2d3e" opacity=".35"/>
-            <path d="M153 131c3-57 44-91 91-91 60 0 95 46 91 104l-10 73c-6 58-45 104-91 104-49 0-84-48-88-104l7-86Z" fill="url(#skin)"/>
-            <path d="M151 166c-15-20-29-6-23 20 5 23 17 33 27 31Zm178 0c15-20 29-6 23 20-5 23-17 33-27 31Z" fill="#d9967d"/>
-            <path d="M152 169c17-8 12-46 45-71 36-27 84-13 121 20 1-61-34-100-94-96-67 4-103 53-72 147Z" fill="url(#hair)"/>
-            <path d="M316 112c-11 52 12 77 13 144 21-41 25-85 13-124l-26-20Z" fill="#392430"/>
-            <path d="M153 150c-6 86-8 119-32 166-14-57-14-112 10-159Z" fill="#392430"/>
-            <path d="M170 191c15-10 31-10 45-2m43 0c17-10 33-8 47 3" fill="none" stroke="#6b3a39" stroke-width="5" stroke-linecap="round"/>
-            <path d="M176 207c11 9 23 9 34 0m54 0c12 9 24 9 35 0" fill="none" stroke="#432b2d" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="195" cy="208" r="3" fill="#2b1d20"/>
-            <circle cx="282" cy="208" r="3" fill="#2b1d20"/>
-            <path d="M238 211c-3 18-9 34-2 40 5 3 12 3 17 0" fill="none" stroke="#b77567" stroke-width="3" stroke-linecap="round"/>
-            <path d="M211 268c14 9 36 11 55-1-14 18-40 20-55 1Z" fill="#a64559"/>
-            <path d="M218 264c14-4 28-4 41 0" fill="none" stroke="#bd6c6e" stroke-width="3" stroke-linecap="round"/>
-            <ellipse cx="174" cy="237" rx="17" ry="9" fill="#d77f78" opacity=".25"/>
-            <ellipse cx="302" cy="237" rx="17" ry="9" fill="#d77f78" opacity=".25"/>
-            <circle cx="150" cy="216" r="5" fill="#eec989"/>
-            <path d="M150 220v20" stroke="#eec989" stroke-width="3"/>
-            <circle cx="150" cy="242" r="6" fill="#eec989"/>
-            <circle cx="329" cy="216" r="5" fill="#eec989"/>
-            <path d="M329 220v20" stroke="#eec989" stroke-width="3"/>
-            <circle cx="329" cy="242" r="6" fill="#eec989"/>
-            <path d="M162 96c33-45 103-53 146-9M126 316c21-63 16-113 24-145" fill="none" stroke="#a36b82" stroke-width="7" stroke-linecap="round" opacity=".35"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <div class="strip" aria-hidden="true">
-      <div class="strip-track">
-        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
-        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
-        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
-        <span>HAIR STYLING <b>✦</b> NAILS <b>✦</b> MAKEUP <b>✦</b> FACIALS <b>✦</b> BRIDAL BEAUTY <b>✦</b></span>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-i18n="heroEyebrow">YOUR BEAUTY DESTINATION</span>
+      <h1>
+        <span data-i18n="heroLine1">Feel beautiful.</span>
+        <em data-i18n="heroLine2">Be yourself.</em>
+      </h1>
+      <p data-i18n="heroDescription">Discover beauty, care and a moment just for you. Explore our services and contact Nina to plan your visit.</p>
+      <div class="buttons">
+        <a class="button primary" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer" data-i18n="book">BOOK APPOINTMENT</a>
+        <a class="button secondary" href="#services" data-i18n="explore">EXPLORE SERVICES</a>
       </div>
     </div>
 
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-top reveal">
-          <span class="eyebrow" data-i18n="servicesEyebrow">WHAT WE DO</span>
-          <h2 data-i18n="servicesTitle">Beauty services made for you</h2>
-          <p data-i18n="servicesIntro">
-            Discover the little moments of care that help you look and feel amazing.
-          </p>
-        </div>
+    <div class="hero-art" role="img" aria-label="Animated beauty illustration">
+      <div class="art-circle"></div>
+      <span class="floating f1" aria-hidden="true">💅</span>
+      <span class="floating f2" aria-hidden="true">💄</span>
+      <span class="floating f3" aria-hidden="true">✂️</span>
+      <span class="floating f4" aria-hidden="true">👄</span>
 
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-icon">💇‍♀️</div>
-            <h3 data-i18n="hairTitle">Hair Styling</h3>
-            <p data-i18n="hairText">Beautiful cuts, styling and hair looks for every occasion.</p>
-          </article>
+      <svg class="woman" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#271924"/>
+            <stop offset="1" stop-color="#71475b"/>
+          </linearGradient>
+          <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#f2c5aa"/>
+            <stop offset="1" stop-color="#d9967f"/>
+          </linearGradient>
+        </defs>
+        <path d="M103 145C81 65 140 20 209 25c92 7 120 76 104 158-12 63 47 134 59 206 9 54-18 90-55 108H71c-35-33-41-77-17-122 42-80 22-160 49-230Z" fill="url(#hair)"/>
+        <path d="M169 249h65v79h-65z" fill="url(#skin)"/>
+        <path d="M159 302c-55 13-96 40-112 79L24 500h352l-24-119c-15-40-60-67-108-79l-42 55-43-55Z" fill="#85465f"/>
+        <path d="M159 302l43 55 42-55-43 83-42-83Z" fill="#edbea5"/>
+        <path d="M120 130c0-54 34-85 82-85 57 0 88 37 86 92l-9 79c-6 58-39 92-77 92-41 0-73-39-78-92l-4-86Z" fill="url(#skin)"/>
+        <path d="M119 162c9-46 36-74 64-91 31 32 66 39 104 45-3-60-39-94-91-88-61 6-91 63-77 134Z" fill="url(#hair)"/>
+        <path d="M122 137c-10 89-7 138-33 181-9-66-11-124 15-176Z" fill="#372232"/>
+        <path d="M276 107c-5 66 9 120 5 180 25-43 31-119 14-163Z" fill="#372232"/>
+        <path d="M142 183c14-8 27-8 39-2m45 0c13-8 28-7 40 2" fill="none" stroke="#69403d" stroke-width="5" stroke-linecap="round"/>
+        <path d="M146 200c10 7 21 7 31 0m54 0c10 7 21 7 31 0" fill="none" stroke="#3d2730" stroke-width="4" stroke-linecap="round"/>
+        <path d="M204 204l-5 36c5 4 12 4 17 0" fill="none" stroke="#bd806f" stroke-width="3" stroke-linecap="round"/>
+        <path d="M177 262c15 6 34 6 51-1-15 18-36 19-51 1Z" fill="#a34560"/>
+        <ellipse cx="149" cy="229" rx="15" ry="8" fill="#cf727b" opacity=".25"/>
+        <ellipse cx="257" cy="229" rx="15" ry="8" fill="#cf727b" opacity=".25"/>
+        <circle cx="120" cy="213" r="5" fill="#efca90"/>
+        <circle cx="284" cy="213" r="5" fill="#efca90"/>
+        <path d="M120 217v20m164-20v20" stroke="#efca90" stroke-width="3"/>
+        <circle cx="120" cy="240" r="6" fill="#efca90"/>
+        <circle cx="284" cy="240" r="6" fill="#efca90"/>
+        <path d="M127 84c37-43 98-42 136-8" fill="none" stroke="#ba829c" opacity=".3" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
-          <article class="service-card reveal">
-            <div class="service-icon">💅</div>
-            <h3 data-i18n="nailsTitle">Nail Care</h3>
-            <p data-i18n="nailsText">Manicures, pedicures and lovely finishing touches.</p>
-          </article>
+<div class="strip" data-i18n="strip">HAIR ✦ NAILS ✦ MAKEUP ✦ BEAUTY ✦ LIP INJECTIONS</div>
 
-          <article class="service-card reveal">
-            <div class="service-icon">💄</div>
-            <h3 data-i18n="makeupTitle">Makeup</h3>
-            <p data-i18n="makeupText">An elegant look for your celebration or special event.</p>
-          </article>
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-top reveal">
+      <span class="eyebrow" data-i18n="servicesEyebrow">OUR BEAUTY SERVICES</span>
+      <h2 data-i18n="servicesTitle">A little care. A beautiful feeling.</h2>
+      <p data-i18n="servicesIntro">Explore our beauty services and ask us about availability.</p>
+    </div>
 
-          <article class="service-card reveal">
-            <div class="service-icon">🧖‍♀️</div>
-            <h3 data-i18n="facialTitle">Facials</h3>
-            <p data-i18n="facialText">A refreshing beauty experience for glowing skin.</p>
-          </article>
+    <div class="services-grid">
+      <article class="card reveal">
+        <div class="icon">💇‍♀️</div>
+        <h3 data-i18n="hairTitle">Hair Styling</h3>
+        <p data-i18n="hairText">Cuts and styling for everyday looks and special occasions.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">💅</div>
+        <h3 data-i18n="nailsTitle">Nail Care</h3>
+        <p data-i18n="nailsText">Manicures, pedicures and beautiful finishing touches.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">💄</div>
+        <h3 data-i18n="makeupTitle">Makeup</h3>
+        <p data-i18n="makeupText">An elegant look for your celebration or special event.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">🧖‍♀️</div>
+        <h3 data-i18n="facialTitle">Facials</h3>
+        <p data-i18n="facialText">A refreshing beauty experience and a moment to relax.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">✨</div>
+        <h3 data-i18n="browsTitle">Brows & Beauty</h3>
+        <p data-i18n="browsText">Finishing touches that highlight your natural beauty.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">👰‍♀️</div>
+        <h3 data-i18n="bridalTitle">Bridal Beauty</h3>
+        <p data-i18n="bridalText">Plan your beauty look for your most special day.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-          <article class="service-card reveal">
-            <div class="service-icon">✨</div>
-            <h3 data-i18n="browsTitle">Brows & Beauty</h3>
-            <p data-i18n="browsText">Details that highlight your natural beauty.</p>
-          </article>
+<section class="section aesthetics" id="aesthetics">
+  <div class="container aesthetic-grid">
+    <div class="lips-panel reveal" role="img" aria-label="Animated illustration of lips">
+      <span class="sparkle one" aria-hidden="true">✦</span>
+      <span class="sparkle two" aria-hidden="true">✦</span>
 
-          <article class="service-card reveal">
-            <div class="service-icon">👰‍♀️</div>
-            <h3 data-i18n="bridalTitle">Bridal Beauty</h3>
-            <p data-i18n="bridalText">Feel wonderful and look unforgettable on your big day.</p>
-          </article>
-        </div>
+      <svg class="lips-art" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="lipColor" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#de718f"/>
+            <stop offset="1" stop-color="#9a365c"/>
+          </linearGradient>
+        </defs>
+        <path d="M25 103C70 75 94 40 133 58c15 7 20 20 27 20s14-14 29-20c39-16 63 17 106 45-48 17-90 27-135 26-46 1-91-11-135-26Z" fill="url(#lipColor)"/>
+        <path d="M25 103c38 51 85 78 135 78s99-27 135-78c-45 9-84 16-135 16s-92-7-135-16Z" fill="#c6577d"/>
+        <path d="M26 103c48 6 91 11 134 10 46 1 88-5 134-10-49 18-89 25-134 25-46 0-87-8-134-25Z" fill="#733147"/>
+        <path d="M92 143c36 17 76 20 109 7" fill="none" stroke="#f3a9ba" stroke-width="9" stroke-linecap="round" opacity=".6"/>
+        <path d="M83 81c18-13 31-17 46-9" fill="none" stroke="#f8bac8" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+      </svg>
+    </div>
+
+    <div class="aesthetic-copy reveal">
+      <span class="eyebrow" data-i18n="aestheticEyebrow">AESTHETIC ENQUIRIES</span>
+      <h2 data-i18n="lipTitle">Lip Injections</h2>
+      <p data-i18n="lipText">Interested in lip injections? Contact Nina to discuss the treatment offered, the practitioner’s qualifications, suitability and appointment availability.</p>
+      <span class="treatment-label" data-i18n="lipLabel">Ask about lip treatments</span>
+      <div class="buttons">
+        <a class="button primary" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer" data-i18n="lipButton">ENQUIRE ON WHATSAPP</a>
+        <a class="button secondary" href="https://www.instagram.com/injectionlyon69/" target="_blank" rel="noopener noreferrer" data-i18n="viewInstagram">VIEW INSTAGRAM</a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="section experience" id="about">
-      <div class="container experience-grid">
-        <div class="beauty-display reveal">
-          <div class="visual-tile">
-            <span class="tile-art" aria-hidden="true">💇‍♀️</span>
-            <span data-i18n="hairDisplay">Hair beauty</span>
-          </div>
-          <div class="visual-tile">
-            <span class="tile-art" aria-hidden="true">💅</span>
-            <span data-i18n="nailsDisplay">Nail beauty</span>
-          </div>
-        </div>
+<section class="section about">
+  <div class="container about-box reveal">
+    <div class="section-top">
+      <span class="eyebrow" data-i18n="aboutEyebrow">WELCOME TO NINA</span>
+      <h2 data-i18n="aboutTitle">Your moment to feel beautiful</h2>
+    </div>
+    <p data-i18n="aboutText">Take a little time for yourself at Nina Beauty Saloon. Discover our beauty services, explore our Instagram and get in touch to plan your visit.</p>
+    <div class="features">
+      <span data-i18n="feature1">✦ Beauty for your special moments</span>
+      <span data-i18n="feature2">✦ Easy WhatsApp enquiries</span>
+      <span data-i18n="feature3">✦ Discover more on Instagram</span>
+    </div>
+  </div>
+</section>
 
-        <div class="experience-copy reveal">
-          <span class="eyebrow" data-i18n="aboutEyebrow">WELCOME TO NINA</span>
-          <h2 data-i18n="aboutTitle">Your time to feel beautiful</h2>
-          <p data-i18n="aboutText">
-            Nina Beauty Saloon is a space to pause, relax and enjoy a little time for yourself. Explore our beauty services and get in touch to plan your visit.
-          </p>
-          <div class="feature"><i>✦</i><span data-i18n="feature1">Beauty for everyday and special occasions</span></div>
-          <div class="feature"><i>✦</i><span data-i18n="feature2">A welcoming salon experience</span></div>
-          <div class="feature"><i>✦</i><span data-i18n="feature3">Easy appointment booking on WhatsApp</span></div>
-          <div class="buttons">
-            <a class="button primary whatsapp-link" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer" data-i18n="book">
-              BOOK APPOINTMENT
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="section cta" id="contact">
+  <div class="container reveal">
+    <span class="eyebrow" data-i18n="contactEyebrow">LET'S MAKE IT A BEAUTIFUL DAY</span>
+    <h2 data-i18n="contactTitle">Get in touch with Nina</h2>
+    <p data-i18n="contactText">Ask about services, treatments and appointment availability.</p>
 
-    <section class="section cta" id="contact">
-      <div class="container reveal">
-        <span class="eyebrow" style="color:#f5cbd5" data-i18n="contactEyebrow">
-          LET'S MAKE IT A BEAUTIFUL DAY
-        </span>
-        <h2 data-i18n="contactTitle">Your beauty moment awaits</h2>
-        <p data-i18n="contactText">
-          Message Nina Beauty Saloon to ask about services and book your appointment.
-        </p>
+    <div class="contact-actions">
+      <a class="button" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.4-4.7A8.5 8.5 0 1 1 20.5 11.6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M8 7.5c-.8 1.4.5 4.1 2.2 5.8 1.6 1.6 4.2 2.8 5.6 2l.8-1.4-2.5-1.2-.9.8c-1.6-.7-2.7-1.8-3.4-3.4l.8-.9L9.4 7l-1.4.5Z" fill="currentColor"/>
+        </svg>
+        <span data-i18n="chat">CHAT ON WHATSAPP</span>
+      </a>
 
-        <a class="button whatsapp-link" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer" data-i18n="chat">
-          CHAT ON WHATSAPP
-        </a>
+      <a class="instagram" href="https://www.instagram.com/injectionlyon69/" target="_blank" rel="noopener noreferrer" aria-label="Visit @injectionlyon69 on Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="18" cy="6" r="1.2" fill="currentColor"/>
+        </svg>
+        <bdi>@injectionlyon69</bdi>
+      </a>
+    </div>
 
-        <a class="contact-number whatsapp-link" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer">
-          +33 6 51 60 05 11
-        </a>
+    <a class="phone" href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer">
+      <bdi>+33 6 51 60 05 11</bdi>
+    </a>
+  </div>
+</section>
+</main>
 
-        <a
-          class="instagram-link"
-          href="https://www.instagram.com/injectionlyon69/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit @injectionlyon69 on Instagram"
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-            <circle cx="18" cy="6" r="1.2" fill="currentColor"/>
-          </svg>
-          @injectionlyon69
-        </a>
-      </div>
-    </section>
-  </main>
+<footer>
+  © <span id="year"></span> NINA BEAUTY SALOON ·
+  <span data-i18n="footer">BEAUTY BEGINS HERE</span>
+</footer>
 
-  <footer>
-    © <span id="year"></span> NINA BEAUTY SALOON · <span data-i18n="footer">BEAUTY BEGINS HERE</span>
-  </footer>
+<script>
+const translations={
+en:{
+  announcement:"BEAUTY • CONFIDENCE • YOU",
+  home:"HOME",services:"SERVICES",aesthetics:"AESTHETICS",contact:"CONTACT",
+  heroEyebrow:"YOUR BEAUTY DESTINATION",
+  heroLine1:"Feel beautiful.",heroLine2:"Be yourself.",
+  heroDescription:"Discover beauty, care and a moment just for you. Explore our services and contact Nina to plan your visit.",
+  book:"BOOK APPOINTMENT",explore:"EXPLORE SERVICES",
+  strip:"HAIR ✦ NAILS ✦ MAKEUP ✦ BEAUTY ✦ LIP INJECTIONS",
+  servicesEyebrow:"OUR BEAUTY SERVICES",
+  servicesTitle:"A little care. A beautiful feeling.",
+  servicesIntro:"Explore our beauty services and ask us about availability.",
+  hairTitle:"Hair Styling",hairText:"Cuts and styling for everyday looks and special occasions.",
+  nailsTitle:"Nail Care",nailsText:"Manicures, pedicures and beautiful finishing touches.",
+  makeupTitle:"Makeup",makeupText:"An elegant look for your celebration or special event.",
+  facialTitle:"Facials",facialText:"A refreshing beauty experience and a moment to relax.",
+  browsTitle:"Brows & Beauty",browsText:"Finishing touches that highlight your natural beauty.",
+  bridalTitle:"Bridal Beauty",bridalText:"Plan your beauty look for your most special day.",
+  aestheticEyebrow:"AESTHETIC ENQUIRIES",
+  lipTitle:"Lip Injections",
+  lipText:"Interested in lip injections? Contact Nina to discuss the treatment offered, the practitioner’s qualifications, suitability and appointment availability.",
+  lipLabel:"Ask about lip treatments",
+  lipButton:"ENQUIRE ON WHATSAPP",viewInstagram:"VIEW INSTAGRAM",
+  aboutEyebrow:"WELCOME TO NINA",
+  aboutTitle:"Your moment to feel beautiful",
+  aboutText:"Take a little time for yourself at Nina Beauty Saloon. Discover our beauty services, explore our Instagram and get in touch to plan your visit.",
+  feature1:"✦ Beauty for your special moments",
+  feature2:"✦ Easy WhatsApp enquiries",
+  feature3:"✦ Discover more on Instagram",
+  contactEyebrow:"LET'S MAKE IT A BEAUTIFUL DAY",
+  contactTitle:"Get in touch with Nina",
+  contactText:"Ask about services, treatments and appointment availability.",
+  chat:"CHAT ON WHATSAPP",footer:"BEAUTY BEGINS HERE"
+},
+ar:{
+  announcement:"الجمال • الثقة • أنتِ",
+  home:"الرئيسية",services:"الخدمات",aesthetics:"التجميل",contact:"تواصل معنا",
+  heroEyebrow:"وجهتكِ للجمال",
+  heroLine1:"اشعري بالجمال.",heroLine2:"كوني نفسكِ.",
+  heroDescription:"اكتشفي الجمال والعناية ولحظة خاصة بكِ. تعرّفي على خدماتنا وتواصلي مع نينا للتخطيط لزيارتكِ.",
+  book:"احجزي موعداً",explore:"اكتشفي الخدمات",
+  strip:"الشعر ✦ الأظافر ✦ المكياج ✦ الجمال ✦ حقن الشفاه",
+  servicesEyebrow:"خدماتنا التجميلية",
+  servicesTitle:"قليل من العناية. شعور جميل.",
+  servicesIntro:"اكتشفي خدماتنا التجميلية واستفسري عن المواعيد المتاحة.",
+  hairTitle:"تصفيف الشعر",hairText:"قصات وتسريحات للإطلالات اليومية والمناسبات الخاصة.",
+  nailsTitle:"العناية بالأظافر",nailsText:"مانيكير وباديكير ولمسات نهائية جميلة.",
+  makeupTitle:"المكياج",makeupText:"إطلالة أنيقة للاحتفالات والمناسبات الخاصة.",
+  facialTitle:"العناية بالبشرة",facialText:"تجربة تجميل منعشة ولحظة للاسترخاء.",
+  browsTitle:"الحواجب والجمال",browsText:"لمسات نهائية تبرز جمالكِ الطبيعي.",
+  bridalTitle:"تجميل العرائس",bridalText:"خططي لإطلالتكِ الجميلة في يومكِ المميز.",
+  aestheticEyebrow:"استفسارات عن العلاجات التجميلية",
+  lipTitle:"حقن الشفاه",
+  lipText:"هل أنتِ مهتمة بحقن الشفاه؟ تواصلي مع نينا للاستفسار عن العلاج المقدّم ومؤهلات الممارس ومدى ملاءمته لكِ والمواعيد المتاحة.",
+  lipLabel:"استفسري عن علاجات الشفاه",
+  lipButton:"استفسري عبر واتساب",viewInstagram:"شاهدي إنستغرام",
+  aboutEyebrow:"مرحباً بكِ في نينا",
+  aboutTitle:"لحظتكِ للشعور بالجمال",
+  aboutText:"خذي بعض الوقت لنفسكِ في صالون نينا للتجميل. اكتشفي خدماتنا وتصفحي حسابنا على إنستغرام وتواصلي معنا للتخطيط لزيارتكِ.",
+  feature1:"✦ جمال للحظاتكِ الخاصة",
+  feature2:"✦ استفسارات سهلة عبر واتساب",
+  feature3:"✦ اكتشفي المزيد على إنستغرام",
+  contactEyebrow:"لنجعل يومكِ أكثر جمالاً",
+  contactTitle:"تواصلي مع نينا",
+  contactText:"استفسري عن الخدمات والعلاجات والمواعيد المتاحة.",
+  chat:"تواصلي عبر واتساب",footer:"الجمال يبدأ هنا"
+},
+fr:{
+  announcement:"BEAUTÉ • CONFIANCE • VOUS",
+  home:"ACCUEIL",services:"SERVICES",aesthetics:"ESTHÉTIQUE",contact:"CONTACT",
+  heroEyebrow:"VOTRE DESTINATION BEAUTÉ",
+  heroLine1:"Sentez-vous belle.",heroLine2:"Soyez vous-même.",
+  heroDescription:"Découvrez la beauté, les soins et un moment rien que pour vous. Explorez nos services et contactez Nina pour organiser votre visite.",
+  book:"PRENDRE RENDEZ-VOUS",explore:"DÉCOUVRIR LES SERVICES",
+  strip:"COIFFURE ✦ ONGLES ✦ MAQUILLAGE ✦ BEAUTÉ ✦ INJECTIONS DES LÈVRES",
+  servicesEyebrow:"NOS SERVICES BEAUTÉ",
+  servicesTitle:"Un peu de soin. Un beau sentiment.",
+  servicesIntro:"Découvrez nos services beauté et renseignez-vous sur nos disponibilités.",
+  hairTitle:"Coiffure",hairText:"Coupes et coiffures pour le quotidien et les occasions spéciales.",
+  nailsTitle:"Soins des ongles",nailsText:"Manucures, pédicures et jolies finitions.",
+  makeupTitle:"Maquillage",makeupText:"Un look élégant pour vos fêtes et événements.",
+  facialTitle:"Soins du visage",facialText:"Une expérience beauté rafraîchissante et un moment de détente.",
+  browsTitle:"Sourcils et beauté",browsText:"Des touches finales qui révèlent votre beauté naturelle.",
+  bridalTitle:"Beauté de la mariée",bridalText:"Préparez votre mise en beauté pour votre grand jour.",
+  aestheticEyebrow:"RENSEIGNEMENTS ESTHÉTIQUES",
+  lipTitle:"Injections des lèvres",
+  lipText:"Vous souhaitez vous renseigner sur les injections des lèvres ? Contactez Nina pour discuter du traitement proposé, des qualifications du praticien, de votre éligibilité et des disponibilités.",
+  lipLabel:"Renseignez-vous sur les traitements des lèvres",
+  lipButton:"SE RENSEIGNER SUR WHATSAPP",viewInstagram:"VOIR INSTAGRAM",
+  aboutEyebrow:"BIENVENUE CHEZ NINA",
+  aboutTitle:"Votre moment pour vous sentir belle",
+  aboutText:"Prenez un peu de temps pour vous chez Nina Beauty Saloon. Découvrez nos services beauté, explorez notre Instagram et contactez-nous pour organiser votre visite.",
+  feature1:"✦ La beauté pour vos moments spéciaux",
+  feature2:"✦ Contact facile sur WhatsApp",
+  feature3:"✦ Découvrez-en plus sur Instagram",
+  contactEyebrow:"EMBELLISSONS VOTRE JOURNÉE",
+  contactTitle:"Contactez Nina",
+  contactText:"Renseignez-vous sur les services, les traitements et les disponibilités.",
+  chat:"DISCUTER SUR WHATSAPP",footer:"LA BEAUTÉ COMMENCE ICI"
+}
+};
 
-  <script>
-    const translations = {
-      en: {
-        announcement: "BEAUTY • CONFIDENCE • YOU",
-        home: "HOME", services: "SERVICES", about: "ABOUT", contact: "CONTACT",
-        heroEyebrow: "YOUR BEAUTY DESTINATION",
-        heroLine1: "Feel beautiful.", heroLine2: "Be yourself.",
-        heroDescription: "Step into a world of beauty and relaxation. From stunning hair to flawless nails, your moment to shine begins here.",
-        book: "BOOK APPOINTMENT", explore: "EXPLORE SERVICES",
-        servicesEyebrow: "WHAT WE DO",
-        servicesTitle: "Beauty services made for you",
-        servicesIntro: "Discover the little moments of care that help you look and feel amazing.",
-        hairTitle: "Hair Styling", hairText: "Beautiful cuts, styling and hair looks for every occasion.",
-        nailsTitle: "Nail Care", nailsText: "Manicures, pedicures and lovely finishing touches.",
-        makeupTitle: "Makeup", makeupText: "An elegant look for your celebration or special event.",
-        facialTitle: "Facials", facialText: "A refreshing beauty experience for glowing skin.",
-        browsTitle: "Brows & Beauty", browsText: "Details that highlight your natural beauty.",
-        bridalTitle: "Bridal Beauty", bridalText: "Feel wonderful and look unforgettable on your big day.",
-        hairDisplay: "Hair beauty", nailsDisplay: "Nail beauty",
-        aboutEyebrow: "WELCOME TO NINA",
-        aboutTitle: "Your time to feel beautiful",
-        aboutText: "Nina Beauty Saloon is a space to pause, relax and enjoy a little time for yourself. Explore our beauty services and get in touch to plan your visit.",
-        feature1: "Beauty for everyday and special occasions",
-        feature2: "A welcoming salon experience",
-        feature3: "Easy appointment booking on WhatsApp",
-        contactEyebrow: "LET'S MAKE IT A BEAUTIFUL DAY",
-        contactTitle: "Your beauty moment awaits",
-        contactText: "Message Nina Beauty Saloon to ask about services and book your appointment.",
-        chat: "CHAT ON WHATSAPP",
-        footer: "BEAUTY BEGINS HERE"
-      },
+function setLanguage(lang){
+  if(!translations[lang])lang="en";
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  document.body.dir=document.documentElement.dir;
 
-      ar: {
-        announcement: "الجمال • الثقة • أنتِ",
-        home: "الرئيسية", services: "الخدمات", about: "من نحن", contact: "تواصل معنا",
-        heroEyebrow: "وجهتكِ للجمال",
-        heroLine1: "اشعري بالجمال.", heroLine2: "كوني نفسكِ.",
-        heroDescription: "ادخلي عالماً من الجمال والاسترخاء. من الشعر الجميل إلى الأظافر الأنيقة، تبدأ لحظتكِ للتألق هنا.",
-        book: "احجزي موعداً", explore: "اكتشفي الخدمات",
-        servicesEyebrow: "ماذا نقدم",
-        servicesTitle: "خدمات تجميل تناسبكِ",
-        servicesIntro: "اكتشفي لحظات العناية التي تساعدكِ على الظهور والشعور بأفضل حال.",
-        hairTitle: "تصفيف الشعر", hairText: "قصات وتسريحات وإطلالات شعر جميلة لكل مناسبة.",
-        nailsTitle: "العناية بالأظافر", nailsText: "مانيكير وباديكير ولمسات نهائية جميلة.",
-        makeupTitle: "المكياج", makeupText: "إطلالة أنيقة للاحتفالات والمناسبات الخاصة.",
-        facialTitle: "العناية بالبشرة", facialText: "تجربة تجميل منعشة لبشرة مشرقة.",
-        browsTitle: "الحواجب والجمال", browsText: "تفاصيل تبرز جمالكِ الطبيعي.",
-        bridalTitle: "تجميل العرائس", bridalText: "اشعري بالجمال وتأَلقي بإطلالة لا تُنسى في يومكِ الكبير.",
-        hairDisplay: "جمال الشعر", nailsDisplay: "جمال الأظافر",
-        aboutEyebrow: "مرحباً بكِ في نينا",
-        aboutTitle: "حان وقتكِ لتشعري بالجمال",
-        aboutText: "صالون نينا للتجميل مساحة للاسترخاء والاستمتاع ببعض الوقت لنفسكِ. اكتشفي خدماتنا وتواصلي معنا للتخطيط لزيارتكِ.",
-        feature1: "جمال لكل يوم وللمناسبات الخاصة",
-        feature2: "تجربة صالون ترحيبية",
-        feature3: "حجز سهل عبر واتساب",
-        contactEyebrow: "لنجعل يومكِ أكثر جمالاً",
-        contactTitle: "لحظتكِ الجميلة بانتظاركِ",
-        contactText: "راسلي صالون نينا للتجميل للاستفسار عن الخدمات وحجز موعدكِ.",
-        chat: "تواصلي عبر واتساب",
-        footer: "الجمال يبدأ هنا"
-      },
+  document.querySelectorAll("[data-i18n]").forEach(element=>{
+    element.textContent=translations[lang][element.dataset.i18n];
+  });
 
-      fr: {
-        announcement: "BEAUTÉ • CONFIANCE • VOUS",
-        home: "ACCUEIL", services: "SERVICES", about: "À PROPOS", contact: "CONTACT",
-        heroEyebrow: "VOTRE DESTINATION BEAUTÉ",
-        heroLine1: "Sentez-vous belle.", heroLine2: "Soyez vous-même.",
-        heroDescription: "Entrez dans un univers de beauté et de détente. Des cheveux magnifiques aux ongles soignés, votre moment pour rayonner commence ici.",
-        book: "PRENDRE RENDEZ-VOUS", explore: "DÉCOUVRIR LES SERVICES",
-        servicesEyebrow: "NOS PRESTATIONS",
-        servicesTitle: "Des services beauté pour vous",
-        servicesIntro: "Découvrez ces instants de soin qui vous aident à vous sentir merveilleusement bien.",
-        hairTitle: "Coiffure", hairText: "Coupes et coiffures élégantes pour chaque occasion.",
-        nailsTitle: "Soins des ongles", nailsText: "Manucures, pédicures et jolies finitions.",
-        makeupTitle: "Maquillage", makeupText: "Un look élégant pour vos fêtes et événements spéciaux.",
-        facialTitle: "Soins du visage", facialText: "Une expérience rafraîchissante pour une peau éclatante.",
-        browsTitle: "Sourcils et beauté", browsText: "Des détails qui révèlent votre beauté naturelle.",
-        bridalTitle: "Beauté de la mariée", bridalText: "Rayonnez avec un look inoubliable pour votre grand jour.",
-        hairDisplay: "Beauté des cheveux", nailsDisplay: "Beauté des ongles",
-        aboutEyebrow: "BIENVENUE CHEZ NINA",
-        aboutTitle: "Votre moment pour vous sentir belle",
-        aboutText: "Nina Beauty Saloon est un espace pour faire une pause, vous détendre et prendre du temps pour vous. Découvrez nos services et contactez-nous pour organiser votre visite.",
-        feature1: "La beauté au quotidien et pour les grandes occasions",
-        feature2: "Une expérience accueillante",
-        feature3: "Réservation facile sur WhatsApp",
-        contactEyebrow: "EMBELLISSONS VOTRE JOURNÉE",
-        contactTitle: "Votre moment beauté vous attend",
-        contactText: "Écrivez à Nina Beauty Saloon pour découvrir nos services et prendre rendez-vous.",
-        chat: "DISCUTER SUR WHATSAPP",
-        footer: "LA BEAUTÉ COMMENCE ICI"
+  document.querySelectorAll("[data-lang]").forEach(button=>{
+    const active=button.dataset.lang===lang;
+    button.classList.toggle("active",active);
+    button.setAttribute("aria-pressed",String(active));
+  });
+
+  try{localStorage.setItem("ninaLanguage",lang)}catch(error){}
+}
+
+document.querySelectorAll("[data-lang]").forEach(button=>{
+  button.addEventListener("click",()=>setLanguage(button.dataset.lang));
+});
+
+let savedLanguage="en";
+try{savedLanguage=localStorage.getItem("ninaLanguage")||"en"}catch(error){}
+setLanguage(savedLanguage);
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
-    };
-
-    function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      document.body.dir = document.documentElement.dir;
-
-      document.querySelectorAll("[data-i18n]").forEach(element => {
-        element.textContent = translations[lang][element.dataset.i18n];
-      });
-
-      document.querySelectorAll("[data-lang]").forEach(button => {
-        const active = button.dataset.lang === lang;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-pressed", active);
-      });
-
-      localStorage.setItem("ninaLanguage", lang);
-    }
-
-    document.querySelectorAll("[data-lang]").forEach(button => {
-      button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
+  },{threshold:.1});
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const savedLanguage = localStorage.getItem("ninaLanguage");
-    setLanguage(translations[savedLanguage] ? savedLanguage : "en");
-
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .1 });
-
-      document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
-    } else {
-      document.querySelectorAll(".reveal").forEach(element => element.classList.add("visible"));
-    }
-  </script>
+  document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));
+}else{
+  document.querySelectorAll(".reveal").forEach(element=>element.classList.add("visible"));
+}
+</script>
 </body>
 </html>
