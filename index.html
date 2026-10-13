@@ -281,6 +281,45 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
 .ai-photo-note{font-size:12px;color:var(--muted);text-align:center;line-height:1.6;margin:30px auto 0;max-width:760px}
 @media(max-width:700px){.profile-gallery{grid-template-columns:1fr}.hero-art{min-height:0;height:auto}.hero-real-photo{max-width:380px}}
 
+/* Cinematic beauty direction */
+:root{--cinema:#142f30;--mint:#67c9b3}
+header{background:rgba(255,250,246,.9)}
+.hero{background:#142f30;color:#fff;position:relative}
+.hero-grid{min-height:calc(100svh - 120px);padding-block:65px;gap:60px}
+.hero-copy{position:relative;z-index:2}
+.hero h1{font-size:clamp(52px,7vw,100px);font-weight:500;letter-spacing:-2px}
+.hero h1 em{color:#b9dacc}
+.hero .eyebrow{color:#b9dacc}.hero-copy p{color:#e3e8df}
+.hero .primary{background:#e5d5bd;color:#142f30}.hero .secondary{border-color:#b9dacc;color:#fff}
+.hero-art{position:relative;min-height:560px}
+.hero-real-photo{max-width:510px;height:570px;aspect-ratio:auto;border-radius:220px 220px 12px 12px;object-position:50% 38%;animation:portrait-drift 9s ease-in-out infinite;box-shadow:0 35px 80px #0005}
+.hero-art::after{content:'✦';position:absolute;bottom:25px;inset-inline-start:-15px;font-size:80px;color:#d8c3a2;font-family:Georgia,serif;animation:slow-spin 18s linear infinite}
+.strip{background:#e4d9c7;color:#142f30;padding:23px;font-size:11px;letter-spacing:3px}
+.section-top h2,.aesthetic-copy h2{letter-spacing:-1px}
+.card{border:0;border-radius:2px;box-shadow:none;background:transparent}
+.service-photo{aspect-ratio:3/4;margin-bottom:20px;border-radius:150px 150px 3px 3px}
+.card:hover{transform:translateY(-5px);box-shadow:none}
+.service-photo img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.card:hover .service-photo img{transform:scale(1.085)}
+.cinema-scroll{height:230svh;background:#e8e2d8;position:relative}
+.cinema-stage{height:100svh;min-height:600px;position:sticky;top:0;overflow:hidden;display:grid;place-items:center;padding:125px 24px 60px;isolation:isolate}
+.cinema-stage::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,#fff9ef 0,#d7d6ca 80%);z-index:-1}
+.cinema-title{text-align:center;position:absolute;top:140px;width:calc(100% - 40px);margin:0;z-index:2;font-size:clamp(33px,5vw,68px);color:#173d36;line-height:1.12}
+.cinema-title small{display:block;font:11px Arial,sans-serif;letter-spacing:3px;margin-bottom:15px;text-transform:uppercase}
+.syringe-wrap{width:min(780px,95vw);transform:translateY(40px);filter:drop-shadow(0 35px 18px #153a322c);will-change:transform}
+.syringe-wrap svg{width:100%;height:auto;display:block}
+.cinema-caption{position:absolute;bottom:75px;text-align:center;width:min(550px,85%);color:#355148;font-size:15px}
+.cinema-caption a{display:inline-block;margin-top:17px;border-bottom:1px solid #355148;font-size:12px;font-weight:700;padding:4px 0}
+.cinema-orbit{position:absolute;width:520px;height:520px;max-width:85vw;max-height:85vw;border:1px solid #234e3920;border-radius:50%;transform:rotateX(55deg);pointer-events:none}
+.aesthetics{background:#142f30;color:#fff}.aesthetics .eyebrow{color:#b9dacc}.aesthetic-copy p{color:#e4e8df}.aesthetics .primary{background:#e4d9c7;color:#142f30}.aesthetics .secondary{color:white;border-color:#b9dacc}
+.lips-panel{border-radius:6px;box-shadow:0 25px 50px #0003}.lips-real-photo{min-height:460px}
+.profile-gallery img{border-radius:190px 190px 5px 5px}
+.cta{background:#142f30}.cta .eyebrow{color:#b9dacc}
+@keyframes portrait-drift{50%{transform:translateY(-12px) rotate(1deg)}}
+@keyframes slow-spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.hero-grid{gap:30px;padding-block:45px}.hero-art{min-height:0}.hero-real-photo{height:420px;max-width:340px}.hero-art::after{font-size:50px;inset-inline-start:10px}.hero h1{font-size:57px}.cinema-title{top:170px}.cinema-stage{min-height:680px}.cinema-caption{bottom:80px}.cinema-scroll{height:190svh}.syringe-wrap{width:105vw}.lips-real-photo{min-height:350px}.service-photo{aspect-ratio:4/4.2}}
+@media(prefers-reduced-motion:reduce){.cinema-scroll{height:auto}.cinema-stage{position:relative;min-height:700px}.syringe-wrap{transform:translateY(40px)!important}.hero-real-photo{animation:none}}
+
 </style>
 </head>
 
@@ -374,6 +413,38 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
   </div>
 </section>
 
+<section class="cinema-scroll" aria-label="Aesthetic treatment illustration">
+  <div class="cinema-stage">
+    <h2 class="cinema-title"><small data-i18n="cinemaEyebrow">THE ART OF AESTHETICS</small><span data-i18n="cinemaTitle">Beauty in every detail.</span></h2>
+    <div class="cinema-orbit"></div>
+    <div class="syringe-wrap" aria-hidden="true">
+      <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fcfffe"/><stop offset=".25" stop-color="#8eaaa5"/><stop offset=".5" stop-color="#eff8f5"/><stop offset=".75" stop-color="#627f79"/><stop offset="1" stop-color="#d4e3df"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffffaa"/><stop offset=".2" stop-color="#b1ded2bb"/><stop offset=".45" stop-color="#ffffffcc"/><stop offset=".65" stop-color="#70aa9c55"/><stop offset="1" stop-color="#f6fffad0"/></linearGradient>
+          <linearGradient id="gel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#acecdc"/><stop offset=".3" stop-color="#58ceb0"/><stop offset=".7" stop-color="#19967c"/><stop offset="1" stop-color="#5bdec0"/></linearGradient>
+        </defs>
+        <g transform="rotate(-12 500 210)">
+          <path d="M60 212L290 207v8Z" fill="url(#steel)"/>
+          <path d="M272 204l58-6v27l-58-6Z" fill="url(#steel)"/>
+          <rect x="320" y="180" width="75" height="64" rx="10" fill="url(#steel)" stroke="#759a8f"/>
+          <rect x="380" y="152" width="350" height="120" rx="25" fill="url(#glass)" stroke="#b3cfc5" stroke-width="3"/>
+          <rect x="398" y="169" width="239" height="86" rx="14" fill="url(#gel)" opacity=".88"/>
+          <ellipse cx="407" cy="212" rx="10" ry="41" fill="#84e6c7"/>
+          <rect x="626" y="165" width="30" height="94" rx="5" fill="#264c40"/>
+          <rect x="654" y="198" width="225" height="26" rx="4" fill="url(#steel)"/>
+          <rect x="721" y="125" width="20" height="174" rx="8" fill="url(#glass)" stroke="#99b7ae"/>
+          <rect x="872" y="160" width="20" height="105" rx="8" fill="url(#glass)" stroke="#99b7ae"/>
+          <path d="M425 161v23m28-23v15m28-15v23m28-23v15m28-15v23m28-23v15m28-15v23" stroke="#235746" stroke-width="3" opacity=".8"/>
+          <path d="M407 176h194" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+          <path d="M409 262h273" stroke="#fff" stroke-width="3" opacity=".65"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cinema-caption"><span data-i18n="cinemaText">Explore lip treatment enquiries with Nina.</span><br><a href="https://wa.me/33651600511" target="_blank" rel="noopener noreferrer" data-i18n="lipButton">ENQUIRE ON WHATSAPP</a></div>
+  </div>
+</section>
+
 <section class="section aesthetics" id="aesthetics">
   <div class="container aesthetic-grid">
     <div class="lips-panel reveal"><img class="lips-real-photo" src="images/lips.jpg" alt="AI-generated illustrative close-up of lips" width="1000" height="1000" loading="lazy"></div>
@@ -448,6 +519,7 @@ footer{padding:26px 15px;background:#271d23;color:#e8dce2;text-align:center;font
 <script>
 const translations={
 en:{
+cinemaEyebrow:"THE ART OF AESTHETICS",cinemaTitle:"Beauty in every detail.",cinemaText:"Explore lip treatment enquiries with Nina.",
   profileTitle:"Profile & Beauty Gallery",
   profileText:"An illustrative profile portrait. Contact Nina to confirm which aesthetic services are available.",
   photoDisclosure:"Photos are AI-generated illustrations, not actual clients or treatment results.",
@@ -484,6 +556,7 @@ en:{
   chat:"CHAT ON WHATSAPP",footer:"BEAUTY BEGINS HERE"
 },
 ar:{
+cinemaEyebrow:"فن التجميل",cinemaTitle:"الجمال في كل تفصيل.",cinemaText:"استفسري مع نينا عن علاجات الشفاه.",
   profileTitle:"معرض جمال ملامح الوجه",
   profileText:"صورة جانبية توضيحية للوجه. تواصلي مع نينا للتأكد من الخدمات التجميلية المتاحة.",
   photoDisclosure:"الصور توضيحية مولّدة بالذكاء الاصطناعي، وليست صوراً لعميلات أو لنتائج علاجات.",
@@ -520,6 +593,7 @@ ar:{
   chat:"تواصلي عبر واتساب",footer:"الجمال يبدأ هنا"
 },
 fr:{
+cinemaEyebrow:"L’ART DE L’ESTHÉTIQUE",cinemaTitle:"La beauté dans chaque détail.",cinemaText:"Renseignez-vous auprès de Nina sur les traitements des lèvres.",
   profileTitle:"Galerie beauté et profil",
   profileText:"Un portrait de profil illustratif. Contactez Nina pour confirmer les services esthétiques disponibles.",
   photoDisclosure:"Les photos sont des illustrations générées par IA, et non des photos de clientes ou de résultats de traitements.",
@@ -600,6 +674,26 @@ if("IntersectionObserver" in window){
 }else{
   document.querySelectorAll(".reveal").forEach(element=>element.classList.add("visible"));
 }
+
+const cinematicSection=document.querySelector('.cinema-scroll');
+const syringe=document.querySelector('.syringe-wrap');
+const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+let animationPending=false;
+function updateCinematicScene(){
+ animationPending=false;
+ if(motionPreference.matches)return;
+ const rect=cinematicSection.getBoundingClientRect();
+ const distance=cinematicSection.offsetHeight-window.innerHeight;
+ const progress=Math.max(0,Math.min(1,-rect.top/Math.max(1,distance)));
+ const rotation=-18+progress*42;
+ const scale=.8+Math.sin(progress*Math.PI)*.25;
+ syringe.style.transform='translateY('+ (50-progress*55)+'px) rotate('+rotation+'deg) scale('+scale+')';
+}
+function queueCinematicFrame(){if(!animationPending){animationPending=true;requestAnimationFrame(updateCinematicScene);}}
+window.addEventListener('scroll',queueCinematicFrame,{passive:true});
+window.addEventListener('resize',queueCinematicFrame);
+updateCinematicScene();
+
 </script>
 </body>
 </html>
